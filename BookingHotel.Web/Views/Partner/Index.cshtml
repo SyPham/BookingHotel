@@ -1,0 +1,301 @@
+﻿@model IEnumerable<PartnerModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="user-panel-body py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-sm-4">
+                <div class="user-panel-body-left">
+                    <div class="bg-white rounded p-4 mb-4 text-center shadow-sm">
+                        <img class="mb-3 mt-2 user-info-img" alt="Generic placeholder image" src="images/user/6.png">
+                        <h6 class="text-black mb-2 text-gray-900">Johny Huỳnh</h6>
+                        <p class="m-0"><a href="mailto:jackteenken@gmail.com" class="__cf_email__">jackteenken@gmail.com</a></p>
+                        <p class="mb-3">0963984918</p>
+                        <button type="button" class="btn btn-primary btn-block" onclick="location.href='index.html';">
+                            <i class="icofont-logout"></i>
+                            Đăng xuất
+                        </button>
+                        <p class="mb-0 mt-3"><a href="#">Cập nhật tài khoản</a></p>
+                    </div>
+                    <div class="user-panel-sidebar-link mb-4 bg-white rounded shadow-sm overflow-hidden">
+                        <a href="#mc"><i class="icofont-ticket"></i> Mã giảm giá của tôi</a>
+                        <a href="#md"><i class="icofont-fire"></i> Đang khuyến mãi</a>
+                        <a href="#mo"><i class="icofont-sale-discount"></i> Ngưng bán</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-sm-8">
+                <div class="user-panel-body-right">
+                    <div id="mc" class="user-panel-tab-view mb-4">
+                        <div class="shadow-sm rounded overflow-hidden mb-3">
+                            <div class="p-4 bg-white">
+                                <h5 class="mb-0 text-gray-900">Mã giảm giá của tôi</h5>
+                            </div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#">Tất cả</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Đang khuyến mãi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Ngưng bán</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="custom-card shadow-sm h-100">
+                                        <div class="custom-card-image">
+                                            <a href="product-detail.html">
+                                                <img class="img-fluid item-img" src="images/custom-card/p-7.jpg">
+                                            </a>
+                                            <div class="button-g-btn button-g-btn-up">
+                                                <img class="img-fluid" src="images/user-coupans/starbucks.png">
+                                                <span>Starbucks</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 pt-4">
+                                            <div class="custom-card-body">
+                                                <h6 class="mb-3">
+                                                    <a class="text-gray-900" href="product-detail.html">
+                                                        Teriyaki Burger Value (1 burger + 1 chicken + 1 Pepsi M) tại cửa hàng LOTTERIA
+                                                    </a>
+                                                </h6>
+                                                <p class="text-gray-500 mb-2"><i class="icofont-price"></i> <s>100.000đ</s> <span class="text-gray-600 font-weight-bold">50.000đ</span></p>
+                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau 7 ngày</p>
+                                            </div>
+                                            <div class="custom-card-footer d-flex align-items-center">
+                                                <span class="text-danger"><a href="product-detail.html">Xem thêm</a></span><a class="btn btn-sm btn-white ml-auto text-danger" href="#"><i class="icofont-cart"></i> Mua ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="custom-card shadow-sm h-100">
+                                        <div class="custom-card-image">
+                                            <a href="product-detail.html">
+                                                <img class="img-fluid item-img" src="images/custom-card/p-3.jpg">
+                                            </a>
+                                            <div class="button-g-btn button-g-btn-up">
+                                                <img class="img-fluid" src="images/user-coupans/1.png">
+                                                <span>KFC</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 pt-4">
+                                            <div class="custom-card-body">
+                                                <h6 class="mb-3">
+                                                    <a class="text-gray-900" href="product-detail.html">
+                                                        Được giảm giá cố định 50% đối với đồ ăn trực tuyến, tối đa 200.000 VNĐ
+                                                    </a>
+                                                </h6>
+                                                <p class="text-gray-500 mb-2"><i class="icofont-price"></i> <s>100.000đ</s> <span class="text-gray-600 font-weight-bold">50.000đ</span></p>
+                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau 7 ngày</p>
+                                            </div>
+                                            <div class="custom-card-footer d-flex align-items-center">
+                                                <span class="text-danger"><a href="product-detail.html">Xem thêm</a></span><a class="btn btn-sm btn-white ml-auto text-danger" href="#"><i class="icofont-cart"></i> Mua ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="custom-card shadow-sm h-100">
+                                        <div class="custom-card-image">
+                                            <a href="product-detail.html">
+                                                <img class="img-fluid item-img" src="images/custom-card/p-4.jpg">
+                                            </a>
+                                            <div class="button-g-btn button-g-btn-up">
+                                                <img class="img-fluid" src="images/user-coupans/ministop.jpg">
+                                                <span>MINI STOP</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 pt-4">
+                                            <div class="custom-card-body">
+                                                <h6 class="mb-3">
+                                                    <a class="text-gray-900" href="product-detail.html">
+                                                        Toàn quốc [Evoucher] Phiếu quà tặng mua hàng tại Giftpop trị giá 500.000 VNĐ
+                                                    </a>
+                                                </h6>
+                                                <p class="text-gray-500 mb-2"><i class="icofont-price"></i> <s>100.000đ</s> <span class="text-gray-600 font-weight-bold">50.000đ</span></p>
+                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau 7 ngày</p>
+                                            </div>
+                                            <div class="custom-card-footer d-flex align-items-center">
+                                                <span class="text-danger"><a href="product-detail.html">Xem thêm</a></span><a class="btn btn-sm btn-white ml-auto text-danger" href="#"><i class="icofont-cart"></i> Mua ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="custom-card shadow-sm h-100">
+                                        <div class="custom-card-image">
+                                            <a href="product-detail.html">
+                                                <img class="img-fluid item-img" src="images/custom-card/p-5.jpg">
+                                            </a>
+                                            <div class="button-g-btn button-g-btn-up">
+                                                <img class="img-fluid" src="images/user-coupans/phuclong.jpg">
+                                                <span>Phúc Long</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 pt-4">
+                                            <div class="custom-card-body">
+                                                <h6 class="mb-3">
+                                                    <a class="text-gray-900" href="product-detail.html">
+                                                        Chạy vitamin C trắng sáng da mặt, giảm thâm nám tại Beauty Royal Spa
+                                                    </a>
+                                                </h6>
+                                                <p class="text-gray-500 mb-2"><i class="icofont-price"></i> <s>100.000đ</s> <span class="text-gray-600 font-weight-bold">50.000đ</span></p>
+                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau 7 ngày</p>
+                                            </div>
+                                            <div class="custom-card-footer d-flex align-items-center">
+                                                <span class="text-danger"><a href="product-detail.html">Xem thêm</a></span><a class="btn btn-sm btn-white ml-auto text-danger" href="#"><i class="icofont-cart"></i> Mua ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="custom-card shadow-sm h-100">
+                                        <div class="custom-card-image">
+                                            <a href="product-detail.html">
+                                                <img class="img-fluid item-img" src="images/custom-card/p-6.jpg">
+                                            </a>
+                                            <div class="button-g-btn button-g-btn-up">
+                                                <img class="img-fluid" src="images/user-coupans/starbucks.png">
+                                                <span>Starbucks</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 pt-4">
+                                            <div class="custom-card-body">
+                                                <h6 class="mb-3">
+                                                    <a class="text-gray-900" href="product-detail.html">
+                                                        Teriyaki Burger Value (1 burger + 1 chicken + 1 Pepsi M) tại cửa hàng LOTTERIA
+                                                    </a>
+                                                </h6>
+                                                <p class="text-gray-500 mb-2"><i class="icofont-price"></i> <s>100.000đ</s> <span class="text-gray-600 font-weight-bold">50.000đ</span></p>
+                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau 7 ngày</p>
+                                            </div>
+                                            <div class="custom-card-footer d-flex align-items-center">
+                                                <span class="text-danger"><a href="product-detail.html">Xem thêm</a></span><a class="btn btn-sm btn-white ml-auto text-danger" href="#"><i class="icofont-cart"></i> Mua ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="custom-card shadow-sm h-100">
+                                        <div class="custom-card-image">
+                                            <a href="product-detail.html">
+                                                <img class="img-fluid item-img" src="images/custom-card/p-7.jpg">
+                                            </a>
+                                            <div class="button-g-btn button-g-btn-up">
+                                                <img class="img-fluid" src="images/user-coupans/starbucks.png">
+                                                <span>Starbucks</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 pt-4">
+                                            <div class="custom-card-body">
+                                                <h6 class="mb-3">
+                                                    <a class="text-gray-900" href="product-detail.html">
+                                                        Teriyaki Burger Value (1 burger + 1 chicken + 1 Pepsi M) tại cửa hàng LOTTERIA
+                                                    </a>
+                                                </h6>
+                                                <p class="text-gray-500 mb-2"><i class="icofont-price"></i> <s>100.000đ</s> <span class="text-gray-600 font-weight-bold">50.000đ</span></p>
+                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau 7 ngày</p>
+                                            </div>
+                                            <div class="custom-card-footer d-flex align-items-center">
+                                                <span class="text-danger"><a href="product-detail.html">Xem thêm</a></span><a class="btn btn-sm btn-white ml-auto text-danger" href="#"><i class="icofont-cart"></i> Mua ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="custom-card shadow-sm h-100">
+                                        <div class="custom-card-image">
+                                            <a href="product-detail.html">
+                                                <img class="img-fluid item-img" src="images/custom-card/p-8.jpg">
+                                            </a>
+                                            <div class="button-g-btn button-g-btn-up">
+                                                <img class="img-fluid" src="images/user-coupans/1.png">
+                                                <span>KFC</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 pt-4">
+                                            <div class="custom-card-body">
+                                                <h6 class="mb-3">
+                                                    <a class="text-gray-900" href="product-detail.html">
+                                                        Được giảm giá cố định 50% đối với đồ ăn trực tuyến, tối đa 200.00đ
+                                                    </a>
+                                                </h6>
+                                                <p class="text-gray-500 mb-2"><i class="icofont-price"></i> <s>100.000đ</s> <span class="text-gray-600 font-weight-bold">50.000đ</span></p>
+                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau 7 ngày</p>
+                                            </div>
+                                            <div class="custom-card-footer d-flex align-items-center">
+                                                <span class="text-danger"><a href="product-detail.html">Xem thêm</a></span><a class="btn btn-sm btn-white ml-auto text-danger" href="#"><i class="icofont-cart"></i> Mua ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="custom-card shadow-sm h-100">
+                                        <div class="custom-card-image">
+                                            <a href="product-detail.html">
+                                                <img class="img-fluid item-img" src="images/custom-card/p-9.jpg">
+                                            </a>
+                                            <div class="button-g-btn button-g-btn-up">
+                                                <img class="img-fluid" src="images/user-coupans/phuclong.jpg">
+                                                <span>Phúc Long</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 pt-4">
+                                            <div class="custom-card-body">
+                                                <h6 class="mb-3">
+                                                    <a class="text-gray-900" href="product-detail.html">
+                                                        Chạy vitamin C trắng sáng da mặt, giảm thâm nám tại Beauty Royal Spa
+                                                    </a>
+                                                </h6>
+                                                <p class="text-gray-500 mb-2"><i class="icofont-price"></i> <s>100.000đ</s> <span class="text-gray-600 font-weight-bold">50.000đ</span></p>
+                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau 7 ngày</p>
+                                            </div>
+                                            <div class="custom-card-footer d-flex align-items-center">
+                                                <span class="text-danger"><a href="product-detail.html">Xem thêm</a></span><a class="btn btn-sm btn-white ml-auto text-danger" href="#"><i class="icofont-cart"></i> Mua ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6">
+                                    <div class="custom-card shadow-sm h-100">
+                                        <div class="custom-card-image">
+                                            <a href="product-detail.html">
+                                                <img class="img-fluid item-img" src="images/custom-card/p-10.jpg">
+                                            </a>
+                                            <div class="button-g-btn button-g-btn-up">
+                                                <img class="img-fluid" src="images/user-coupans/ministop.jpg">
+                                                <span>MINI STOP</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 pt-4">
+                                            <div class="custom-card-body">
+                                                <h6 class="mb-3">
+                                                    <a class="text-gray-900" href="product-detail.html">
+                                                        Toàn quốc [Evoucher] Phiếu quà tặng mua hàng tại Giftpop trị giá 500.000 VNĐ
+                                                    </a>
+                                                </h6>
+                                                <p class="text-gray-500 mb-2"><i class="icofont-price"></i> <s>100.000đ</s> <span class="text-gray-600 font-weight-bold">50.000đ</span></p>
+                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau 7 ngày</p>
+                                            </div>
+                                            <div class="custom-card-footer d-flex align-items-center">
+                                                <span class="text-danger"><a href="product-detail.html">Xem thêm</a></span><a class="btn btn-sm btn-white ml-auto text-danger" href="#"><i class="icofont-cart"></i> Mua ngay</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

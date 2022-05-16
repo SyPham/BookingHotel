@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model RegisterCustomerViewModel
+    <!-- Bread Crumb STRAT -->
+    <div class="banner inner-banner1">
+        <div class="container">
+            <section class="banner-detail center-xs">
+                <h1 class="banner-title right-side float-none-xs">Đăng ký</h1>
+                <div class="bread-crumb">
+                    <ul>
+                        <li><a href="index.html"><i class="fa fa-home"></i>Home</a>/</li>
+                        <li><span>Đăng ký</span></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- Bread Crumb END -->
+    <!-- CONTAIN START -->
+    <section class="checkout-section ptb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-8 col-lg-8 col-md-8 ">
+                            <form class="main-form full" asp-route="sign-up">
+                                <div class="row">
+
+                                    <div class="col-12 mb-20">
+                                        <div class="heading-part heading-bg">
+                                            <h2 class="heading">Đăng ký tài khoản</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="heading-part line-bottom ">
+                                            <h2 class="form-title heading">Thông tin cá nhân</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-box">
+                                            <label for="f-name">Họ và tên</label> <span class="text-danger">(*)</span>
+                                            <input type="text" id="f-name" asp-for="FullName" required placeholder="Nhập họ và tên">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="input-box">
+                                            <label for="Email">Email</label> <span class="text-danger">(*)</span>
+                                            <input id="Email" type="email" asp-for="Email" required placeholder="Nhập Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-box">
+                                            <label for="Phone">Số điện thoại</label> <span class="text-danger">(*)</span>
+                                            <input id="Phone" type="email" asp-for="Phone" required placeholder="Nhập số điện thoại">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-box">
+                                            <label for="Username">Tài khoản</label> <span class="text-danger">(*)</span>
+                                            <input id="Username" type="text" asp-for="Username" required placeholder="Nhập tài khoản">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-box">
+                                            <label for="login-pass">Mật khẩu</label> <span class="text-danger">(*)</span>
+                                            <input id="login-pass" type="password" asp-for="Password" required placeholder="Nhập mật khẩu">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <message content="@ViewBag.Content" type="@ViewBag.Type" />
+                                    </div>
+                                    <div class="col-12 mb-20">
+                                        <button name="submit" type="submit" class="btn-color center-side">Submit</button>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <hr>
+                                        <div class="new-account align-center mt-20"> <span>Bạn đã có tài khoản!</span> <a class="link" title="Đăng ký Baby Monkey" href="/dang-nhap">Đăng nhập</a> </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTAINER END -->
+    

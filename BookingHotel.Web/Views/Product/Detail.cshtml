@@ -1,0 +1,515 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string url = Convert.ToString(ViewBag.Url);
+    var id = Model != null ? Model.Id : 0;
+    var customer = ViewBag.Customer as CustomerModel;
+}
+@section metatags {
+    <vc:vc-metatag key-word="@Model?.MetaKeywords" description="@Model?.MetaDescription" />
+}
+<!-- Bread Crumb STRAT -->
+<div class="banner inner-banner1">
+    <div class="container">
+        <section class="banner-detail center-xs">
+            <h1 class="banner-title right-side float-none-xs">@Model.ProductCategoryName</h1>
+            <div class="bread-crumb">
+                <ul>
+                    <li><a href="/"><i class="fa fa-home"></i>Trang chủ</a>/</li>
+                    <li><span>@Model.ProductCategoryName</span>/</li>
+                    <li><span>@Model.Title</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Bread Crumb END -->
+<!-- CONTAINER START -->
+<section class="pt-60 mb-20">
+    <div class="container">
+        <div class="product-detail-view">
+            <div class="">
+                <div class="">
+                    <div class="row m-0">
+                        <div id="sidebar" class="col-md-5 mb-xs-30 p-0 pr-10 static-sidebar">
+                            <div class="sidebar__inner">
+                                <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
+                                    @foreach (var item in Model.ImageListProduct.Split(";"))
+                                    {
+                                        <a asp-route-id="@Model.Id"
+                                           asp-route-catid="@Model.ProductCategoryId"
+                                           asp-route-title="@Model.Title.UrlEncode()"
+                                           asp-route="product-detail">
+                                            <img src="@item.ToImage(url)">
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div id="content" class="col-md-7 p-0 pl-10">
+                            <div class="product-detail-main">
+                                <div class="product-item-details mb-60">
+                                    <h1 class="product-item-name">@Model.Title</h1>
+                                    <div class="rating-summary-block">
+                                        @if (Model.ValueAssess.HasValue)
+                                            {
+                                                var rating = Math.Round((Model.ValueAssess.Value / 5) * 100);
+                                                <div title="@rating%" class="rating-result">
+                                                    <span style="width:@rating%"></span>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div title="0%" class="rating-result">
+                                                    <span style="width:0%"></span>
+                                                </div>
+                                            }
+
+                                    </div>
+                                    <div class="price-box">
+                                        <span class="price">@Model.Price.ToCurrency()</span>
+                                        @if (Model.OldPrice.HasValue && Model.OldPrice > 0)
+                                        {
+
+                                            <del class="price old-price">@Model.OldPrice.ToCurrency()</del>
+                                        }
+                                    </div>
+                                    <div class="product-info-stock-sku">
+                                        @if (Model.StockStatus.HasValue && Model.StockStatus.Value)
+                                        {
+                                            <div>
+                                                <label>Tình trạng: </label>
+                                                <span class="info-deta">Còn hàng</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                <label>Tình trạng: </label>
+                                                <span class="info-deta">Hết hàng</span>
+                                            </div>
+                                        }
+
+                                        <div>
+                                            <label>MSP: </label>
+                                            <span class="info-deta">@Model.Code</span>
+                                        </div>
+                                    </div>
+                                    <hr class="mb-20">
+                                    <p>
+                                        @Model.Description
+                                    </p>
+                                    <hr class="mb-20">
+                                    <div class="mb-20">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-12">
+                                                        <span>Số lượng:</span>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-12">
+                                                        <div class="custom-qty">
+                                                            <button type="button" class="reduced items" onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;"> <i class="fa fa-minus"></i> </button>
+                                                            <input type="text" name="qty" data-productid="@Model.Id" id="qty" value="1" title="Qty" class="input-text qty">
+                                                            <button type="button" class="increase items" onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;"> <i class="fa fa-plus"></i> </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="mb-20">
+                                    <div class="mb-20">
+                                        <div class="bottom-detail cart-button responsive-btn">
+                                            <ul>
+                                                <li class="pro-cart-icon">
+                                                    <a title="Chọn mua" onclick="AddToCartInDetail()"
+                                                       class="btn btn-color"><span></span> Chọn mua</a>
+                                                </li>
+                                                <li class="pro-wishlist-icon">
+                                                    @if (Model.IsWishlist)
+                                                    {
+
+                                                        <a title="Bỏ yêu thích" onclick="DeleteWishlist(@Model.Id)">
+                                                            <span></span> Bỏ yêu thích
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a title="yêu thích" onclick="Wishlist(@Model.Id)">
+                                                            <span></span> Yêu thích
+                                                        </a>
+                                                    }
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detail-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="tabs">
+                                            <ul class="nav nav-tabs">
+                                                <li><a class="tab-Description selected" title="Description">Mô tả</a></li>
+                                                <li><a class="tab-Product-Tags" title="Product-Tags">Đánh giá</a></li>
+                                                @*<li><a class="tab-Reviews" title="Reviews">Bình luận</a></li>*@
+                                            </ul>
+                                        </div>
+                                        <div id="items">
+                                            <div class="tab_content">
+                                                <ul>
+                                                    <li>
+                                                        <div class="items-Description selected">
+                                                            <div class="Description">
+                                                                @Html.Raw(Model.Content)
+
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="items-Product-Tags">
+                                                            <div class="main-form mt-30">
+                                                                <h4>Viết đánh giá</h4>
+                                                                    <div class="row mt-30 mlr_-20">
+                                                                        <div class="col-md-4 mb-20 plr-20">
+                                                                            <input type="text" id="FullName" placeholder="Họ và tên (bắt buộc)" >
+                                                                        </div>
+                                                                        <div class="col-md-5 mb-20 plr-20">
+                                                                            <input type="email" id="Email" placeholder="Email (không bắt buộc)" >
+                                                                        </div>
+                                                                        <div class="col-md-3 mb-20 plr-20">
+                                                                            <input type="text" id="Phone" placeholder="Số điện thoại (bắt buộc)" >
+                                                                        </div>
+                                                                        <div class="col-12 mb-20 plr-20">
+                                                                            <textarea cols="30" id="Content" rows="3" placeholder="Mời bạn chia sẻ thêm một số cảm nhận... (bắt buộc)" ></textarea>
+                                                                        </div>
+                                                                        <div class="col-12 mb-20 plr-20" id="assess-star">
+                                                                            <div class="mb-2">
+                                                                                Hãy chọn sao nhé:
+                                                                            </div>
+                                                                            <div id="rating">
+                                                                                <input type="radio" id="star5" name="rating" value="5" />
+                                                                                <label class="full" for="star5" title="Awesome - 5 stars"></label>
+
+                                                                                <input type="radio" id="star4" name="rating" value="4" />
+                                                                                <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+
+                                                                                <input type="radio" id="star3" name="rating" value="3" />
+                                                                                <label class="full" for="star3" title="Meh - 3 stars"></label>
+
+                                                                                <input type="radio" id="star2" name="rating" value="2" />
+                                                                                <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+
+                                                                                <input type="radio" id="star1" name="rating" value="1" />
+                                                                                <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                                                            </div>
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                        <div class="col-12 plr-20">
+                                                                            <a class="btn btn-color" id="submit" >Gửi thông tin</a>
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+
+                                                            <div id="assess" class="comments-area mt-30">
+                                                                @*<h4>Đánh giá<span>(2)</span></h4>
+                                                                    <ul class="comment-list mt-30">
+                                                                        <li>
+                                                                            <div class="comment-user"> <img src="/images/comment-user.jpg" alt="Shopholic"> </div>
+                                                                            <div class="comment-detail">
+                                                                                <div class="user-name">Henry</div>
+                                                                                <div class="post-info">
+                                                                                    <ul>
+                                                                                        <li>Fab 11, 2016</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <p>Sản phẩm rất tốt</p>
+                                                                            </div>
+                                                                        </li>
+
+                                                                    </ul>*@
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    @*<li>
+                                                            <div class="items-Reviews">
+                                                                <div class="comments-area">
+                                                                    <h4>Bình luận<span>(2)</span></h4>
+                                                                    <ul class="comment-list mt-30">
+                                                                        <li>
+                                                                            <div class="comment-user"> <img src="/images/comment-user.jpg" alt="Shopholic"> </div>
+                                                                            <div class="comment-detail">
+                                                                                <div class="user-name">John Doe</div>
+                                                                                <div class="post-info">
+                                                                                    <ul>
+                                                                                        <li>Fab 11, 2016</li>
+                                                                                        <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <p>Consectetur adipiscing elit integer sit amet augue laoreet maximus nuncac.</p>
+                                                                            </div>
+                                                                            <ul class="comment-list child-comment">
+                                                                                <li>
+                                                                                    <div class="comment-user"> <img src="/images/comment-user.jpg" alt="Shopholic"> </div>
+                                                                                    <div class="comment-detail">
+                                                                                        <div class="user-name">John Doe</div>
+                                                                                        <div class="post-info">
+                                                                                            <ul>
+                                                                                                <li>Fab 11, 2016</li>
+                                                                                                <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <p>Consectetur adipiscing elit integer sit amet augue laoreet maximus nuncac.</p>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="comment-user"> <img src="/images/comment-user.jpg" alt="Shopholic"> </div>
+                                                                                    <div class="comment-detail">
+                                                                                        <div class="user-name">John Doe</div>
+                                                                                        <div class="post-info">
+                                                                                            <ul>
+                                                                                                <li>Fab 11, 2016</li>
+                                                                                                <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <p>Consectetur adipiscing elit integer sit amet augue laoreet maximus nuncac.</p>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="comment-user"> <img src="/images/comment-user.jpg" alt="Shopholic"> </div>
+                                                                            <div class="comment-detail">
+                                                                                <div class="user-name">John Doe</div>
+                                                                                <div class="post-info">
+                                                                                    <ul>
+                                                                                        <li>Fab 11, 2016</li>
+                                                                                        <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <p>Consectetur adipiscing elit integer sit amet augue laoreet maximus nuncac.</p>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="main-form mt-30">
+                                                                    <h4>Để lại bình luận</h4>
+                                                                    <form>
+                                                                        <div class="row mt-30 mlr_-20">
+                                                                            <div class="col-md-4 mb-20 plr-20">
+                                                                                <input type="text" placeholder="Họ và tên" required>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-20 plr-20">
+                                                                                <input type="email" placeholder="Email" required>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-20 plr-20">
+                                                                                <input type="text" placeholder="Số điện thoại" required>
+                                                                            </div>
+                                                                            <div class="col-12 mb-20 plr-20">
+                                                                                <textarea cols="30" rows="3" placeholder="Nội dung" required></textarea>
+                                                                            </div>
+                                                                            <div class="col-12 plr-20">
+                                                                                <button class="btn btn-color" name="submit" type="submit">Submit</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </li>*@
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<vc:vc-product-related id="@Model.Id" cat-id="@Model.ProductCategoryId.Value" number-item="12"></vc:vc-product-related>
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+
+
+            const product = {
+                init: function () {
+                    product.registerEvent();
+                    product.loadProductRating();
+                },
+                loadProductRating() {
+                    let productId = @Html.Raw(Json.Serialize(id));
+
+                    var url = "/Product/ProductRating?id=" + productId;
+                     $.ajax({
+                         url: url,
+                         type: "GET",
+                         dataType: "html",
+                         success: function (result) {
+                             $('#assess').empty();
+                             $('#assess').html(result);
+                             $('.user-icon').each(function () {
+                                 let fullName = $(this).data("name");
+                                 let id = $(this).data("id");
+                                 product.DynamicAvatar(fullName, id);
+                             });
+                             product.registerEvent();
+                         },
+                         error: function(){
+                         }
+                     });
+
+                },
+                DynamicAvatar(fullName, id) {
+                    var colours = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", "#f1c40f", "#e67e22", "#e74c3c", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"];
+
+                    var name = fullName,
+                        nameSplit = name.split(" "),
+                        initials = nameSplit[0].charAt(0).toUpperCase() + nameSplit[1].charAt(0).toUpperCase();
+
+                    var charIndex = initials.charCodeAt(0) - 65,
+                        colourIndex = charIndex % 19;
+
+                    var canvas = document.getElementById('user-icon-' + id);
+                    var context = canvas.getContext("2d");
+
+                    var canvasWidth = $(canvas).attr("width"),
+                        canvasHeight = $(canvas).attr("height"),
+                        canvasCssWidth = canvasWidth,
+                        canvasCssHeight = canvasHeight;
+
+                    if (window.devicePixelRatio) {
+                        $(canvas).attr("width", canvasWidth * window.devicePixelRatio);
+                        $(canvas).attr("height", canvasHeight * window.devicePixelRatio);
+                        $(canvas).css("width", canvasCssWidth);
+                        $(canvas).css("height", canvasCssHeight);
+                        context.scale(window.devicePixelRatio, window.devicePixelRatio);
+                    }
+
+                    context.fillStyle = colours[colourIndex];
+                    context.fillRect(0, 0, canvas.width, canvas.height);
+                    context.font = "20px Arial";
+                    context.textAlign = "center";
+                    context.fillStyle = "#FFF";
+                    context.fillText(initials, canvasCssWidth / 2, canvasCssHeight / 1.5);
+                },
+                updateView() {
+                    let productId = @Html.Raw(Json.Serialize(id));
+                    $.ajax({
+                        type: "PUT",
+                        url: "/product/UpdateView?id=" + productId,
+                        dataType: 'Json',
+                        success: function (result) {
+                        }
+                    });
+                },
+                addAssess() {
+                    let productId = @Html.Raw(Json.Serialize(id));
+                    let obj = {
+                        id: 0,
+                        fullName: $('#FullName').val(),
+                        content: $('#Content').val(),
+                        note: '',
+                        phone: $('#Phone').val(),
+                        numberStar: $('#assess-value > input[name="rate"]').val(),
+                        keyId: productId,
+                        keyName: "Product",
+                        createTime: new Date().toLocaleDateString(),
+                        createBy: 0,
+                        modifyBy: null,
+                        modifyTime: null,
+                        accountId: null
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "/product/AddAssess",
+                        dataType: 'Json',
+                        data: obj,
+                        success: function (result) {
+                            product.resetRatingForm();
+                            product.loadProductRating();
+                            alert('Đánh giá của bạn sẽ được hệ thống kiểm duyệt. Xin cám ơn.');
+                        }
+                    });
+                },
+                fillRating() {
+                    let customerModel = @Html.Raw(Json.Serialize(customer));
+                    if (customerModel) {
+                        $('#FullName').val(customerModel.fullName);
+                        $('#Email').val(customerModel.email);
+                        $('#Phone').val(customerModel.phone);
+                    }
+
+                },
+                calcRate(r) {
+                    const f = ~~r,//Tương tự Math.floor(r)
+                        id = 'star' + f + (r % f ? 'half' : '')
+                    id && (document.getElementById(id).checked = !0)
+                },
+                resetRatingForm() {
+                    let customerModel = @Html.Raw(Json.Serialize(customer));
+                    if (!customerModel) {
+                        $('#FullName').val('');
+                        $('#Phone').val('');
+                        $('#Email').val('');
+                        $('input[name="rate"]').prop("checked", false);
+                    }
+                    $('#Content').val('');
+                },
+                registerEvent: function () {
+                    product.fillRating();
+                    $("#tabs li a").on("click", function (e) {
+                        var title = $(e.currentTarget).attr("title");
+                        $("#tabs li a , .tab_content li div").removeClass("selected");
+                        $(".tab-" + title + ", .items-" + title).addClass("selected");
+                        $("#items").attr("class", "tab-" + title);
+
+                        return false;
+                    });
+
+                    $('#submit').off("click").on("click", function (e) {
+                        if ($('#FullName').val() == '') {
+                            alert('Vui lòng nhập họ và tên!')
+                        }
+                        else if ($('#Phone').val() == '') {
+                            alert('Vui lòng nhập số điện thoại!')
+                        }
+                        else if ($('#Content').val() == '') {
+                            alert('Vui lòng chia sẻ cảm nhận!')
+                        }
+                        else if ($('input[name="rate"]:checked').val() == 'undefined' ) {
+                            alert('Vui lòng chọn số sao!');
+                        }
+                        else if ($('#Email').val() != '' && product.validateEmail($('#Email').val()) == false) {
+                            alert('Vui lòng nhập đúng định dạng email! VD: abc@domain.com');
+                        }
+                        else {
+                            product.addAssess();
+                        }
+                    });
+                    setTimeout(() => {
+                        product.updateView();
+                    }, 30000);
+                },
+                validateEmail(email) {
+                    var re = /^(([^<>()\[\]\.,;:\s@@\"]+(\.[^<>()\[\]\.,;:\s@@\"]+)*)|(\".+\"))@@(([^<>()[\]\.,;:\s@@\"]+\.)+[^<>()[\]\.,;:\s@@\"]{2,})$/;
+                    return re.test(String(email).toLowerCase());
+                },
+                addWishlist: function () {
+
+                }
+            };
+            product.init();
+
+        });
+    </script>
+}

@@ -1,0 +1,38 @@
+﻿@model List<HierarchyNode<MainMenuModel>>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+<div id="categories_popup" class="white-popup-block mfp-hide popup-position">
+    <div class="popup-title">
+        <h2 class="main_title heading"><span>Danh mục</span></h2>
+    </div>
+    <div class="popup-detail">
+        <ul class="cate-inner">
+            @foreach (var item in Model)
+            {
+                <li class="level @(item.HasChildren ? "sub-megamenu" : "")">
+                    <span class="@(item.HasChildren ? "opener plus" : "")"></span>
+                    <a href="/cua-hang/@(item.Entity.Id)" class="page-scroll"><i class="fa fa-female"></i>@item.Entity.Title</a>
+                    <div class="@(item.HasChildren ? "megamenu mega-sub-menu" : "")">
+                        <div class="megamenu-inner-top">
+                            <ul class="sub-menu-level1">
+                                <li class="level2">
+                                    <ul class="sub-menu-level2 ">
+                                        @foreach (var sub in item.ChildNodes)
+                                        {
+                                            <li class="level3">
+                                                <a href="/cua-hang/@(sub.Entity.Id)"><span>■</span>@sub.Entity.Title</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            }
+
+        </ul>
+    </div>
+</div>
+

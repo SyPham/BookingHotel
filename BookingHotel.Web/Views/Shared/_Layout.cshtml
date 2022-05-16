@@ -1,0 +1,191 @@
+﻿@using  System.Security.Claims;
+@{
+    var accountType = "";
+    var userName = "";
+    if (string.IsNullOrEmpty(User.Identity.Name) == false)
+    {
+        accountType = User.Claims.FirstOrDefault(x => x.Type.Equals("AccountType"))?.Value;
+        userName = User.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.NameIdentifier))?.Value;
+    }
+
+}
+
+<!DOCTYPE html>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <!-- Basic Page Needs
+      ================================================== -->
+    <meta charset="utf-8">
+    @RenderSection("Metatags", required: false)
+    <title>@ViewData["Title"]</title>
+    <!-- SEO Meta
+      ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Specific Metas
+      ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+      ================================================== -->
+    <link rel="stylesheet" type="text/css" href="/css/custome67d.css?v=1.3">
+    <link rel="stylesheet" type="text/css" href="/css/responsivee67d.css?v=1.3">
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.html">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.html">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.html">
+    @RenderSection("Styles", required: false)
+
+</head>
+<body class="homepage">
+
+    <div class="se-pre-con"></div>
+    <div id="newslater-popup" class="mfp-hide white-popup-block open align-center">
+        <div class="nl-popup-main">
+            <div class="nl-popup-inner">
+                <div class="newsletter-inner">
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8">
+                            <h2 class="main_title">Join now</h2>
+                            <span>Before it's too late</span>
+                            <p>Sing up now to receive this exclusive offer for a liited time only!</p>
+                            <form>
+                                <input type="email" placeholder="Email Here...">
+                                <button class="btn-black" title="Subscribe">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div id="product_popup" class="quick-view-popup white-popup-block mfp-hide popup-position ">
+        </div>
+        <div class="modal fade" id="QuickView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        </div>
+        <!-- HEADER START -->
+        <vc:vc-header></vc:vc-header>
+        <!-- HEADER END -->
+        @RenderBody()
+        <!-- CONTAINER END -->
+        <!-- FOOTER START -->
+        <vc:vc-footer></vc:vc-footer>
+        <!-- FOOTER END -->
+        <!-- Messenger Plugin chat Code -->
+        <div id="fb-root"></div>
+
+        <!-- Your Plugin chat code -->
+        <div id="fb-customer-chat" class="fb-customerchat">
+        </div>
+
+        <div class="zalo-chat-widget" data-oaid="4597235966395301869" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
+
+
+    </div>
+    <script src="/js/jquery-1.12.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/jquery.downCount.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/fotorama.js"></script>
+    <script src="/js/jquery.magnific-popup.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/common.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=356237489628309&autoLogAppEvents=1" nonce="qQnt23tD"></script>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "812694035770104");
+        chatbox.setAttribute("attribution", "biz_inbox");
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v12.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+    <script>
+        function DynamicAvatarLayout() {
+            let fullName = @Html.Raw(Json.Serialize(userName));
+
+            var colours = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", "#f1c40f", "#e67e22", "#e74c3c", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"];
+            if (fullName) {
+                var name = fullName,
+                    nameSplit = name.split(" "),
+                    initials = nameSplit[0].charAt(0).toUpperCase() + nameSplit[1].charAt(0).toUpperCase();
+
+                var charIndex = initials.charCodeAt(0) - 65,
+                    colourIndex = charIndex % 19;
+
+                var canvas = document.getElementById('avatar-icon');
+                var context = canvas.getContext("2d");
+
+                var canvasWidth = $(canvas).attr("width"),
+                    canvasHeight = $(canvas).attr("height"),
+                    canvasCssWidth = canvasWidth,
+                    canvasCssHeight = canvasHeight;
+
+                if (window.devicePixelRatio) {
+                    $(canvas).attr("width", canvasWidth * window.devicePixelRatio);
+                    $(canvas).attr("height", canvasHeight * window.devicePixelRatio);
+                    $(canvas).css("width", canvasCssWidth);
+                    $(canvas).css("height", canvasCssHeight);
+                    context.scale(window.devicePixelRatio, window.devicePixelRatio);
+                }
+
+                context.fillStyle = "#ee3e80";
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                context.font = "14px Arial";
+                context.textAlign = "center";
+                context.fillStyle = "#FFF";
+                context.fillText(initials, canvasCssWidth / 2, canvasCssHeight / 1.5);
+            }
+
+        }
+        $(document).ready(function () {
+            DynamicAvatarLayout();
+        });
+
+    </script>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '566716964601428',
+                cookie: true,
+                xfbml: true,
+                version: 'v12.0'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    @RenderSection("Scripts", required: false)
+
+
+</body>
+</html>

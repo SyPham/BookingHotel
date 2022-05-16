@@ -1,0 +1,96 @@
+﻿@model ServiceModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var catModel = ViewBag.ServiceCategory as ServiceCategoryModel;
+    string url = Convert.ToString(ViewBag.Url);
+    if(catModel == null) ViewData["Title"] = "Chi tiết dịch vụ"; else ViewData["Title"] = catModel.Title;
+
+}
+@section metatags {
+    <vc:vc-metatag key-word="@catModel.MetaKeywords" description="@catModel.MetaDescription" />
+}
+<vc:vc-banner />
+
+<section class="offer-dedicated-body section-padding">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12 mb-4">
+                <div class="page-title-h5 d-flex align-items-center">
+                    <h5 class="my-0 text-gray-900">@catModel.Title.ToUpper()</h5>
+                </div>
+            </div>
+            <nav class="col-xl-12" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    <li class="breadcrumb-item">
+                        <a asp-route="service"
+                           asp-route-page="1"
+                           asp-route-catid="@catModel.Id"
+                           asp-route-title="@catModel.Title.UrlEncode()">Dịch vụ</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        @catModel.Title
+                    </li>
+                </ol>
+            </nav>
+            <div class="col-xl-8 col-sm-12">
+                <div class="offer-dedicated-body-left">
+                    <div class="shadow-sm rounded overflow-hidden mb-4">
+                        <div class="bg-white coupon-deal-detail-main">
+                            <div class="coupon-deal-detail-main-block">
+                                <img class="img-fluid coupon-deal-detail-main-img" src="@Model.Avatar.ToImage(url)">
+                            </div>
+                            <div class="coupon-deal-detail-main-body p-2">
+                                <h5 class="pr-lg-5 mb-3 text-gray-900">
+                                    @Model.Title
+                                </h5>
+                                <div class="coupon-deal-detail-main-body-p font-weight-light pr-lg-5 mt-4 text-gray-900">
+                                    <div class="entry-content single-page">
+                                        @Html.Raw(Model.Content)
+                                    </div>
+                                </div>
+                                <div class="float-right">
+                                    <button class="btn btn-primary btn-sm" type="button"><i class="icofont-location-arrow"></i> Chia sẽ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <vc:vc-service-related cat-id="@ViewBag.CatID" id="@ViewBag.ID" number-item="3" />
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-4">
+                <div class="filters shadow-sm rounded bg-white mb-4">
+                    <div class="filters-body">
+                        <div id="accordion">
+                            <vc:vc-product-hot-detail />
+
+                            <vc:vc-article-new-detail />
+                            @*<div class="filters-card p-4 border-bottom">
+                                    <div class="filters-card-header">
+                                        <h6 class="mb-0">
+                                            <a href="#" class="btn-link" data-toggle="collapse" aria-expanded="true">
+                                                TAG
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div class="collapse mt-2 show">
+                                        <span class="badge badge-light">Light</span>
+                                        <span class="badge badge-dark">Dark</span>
+                                        <span class="badge badge-primary">Primary</span>
+                                        <span class="badge badge-secondary">Secondary</span>
+                                        <span class="badge badge-success">Success</span>
+                                        <span class="badge badge-danger">Danger</span>
+                                        <span class="badge badge-warning">Warning</span>
+                                        <span class="badge badge-info">Info</span>
+                                        <span class="badge badge-light">Light</span>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

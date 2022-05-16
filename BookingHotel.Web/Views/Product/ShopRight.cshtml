@@ -1,0 +1,1359 @@
+﻿@model ProductModel
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+
+<div class="col-12">
+    <div class="shorting shorting-style-2 mb-20">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="view">
+                    <div class="list-types grid active">
+                        <a>
+                            <div class="grid-icon list-types-icon"></div>
+                        </a>
+                    </div>
+                    <div class="list-types list">
+                        <a>
+                            <div class="list-icon list-types-icon"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="short-by">
+                    <span>Sắp xếp :</span>
+                    <div class="select-item select-dropdown">
+                        <fieldset>
+                            <select name="speed" id="sort-price" class="option-drop">
+                                <option value="" selected="selected">Tên (A to Z)</option>
+                                <option value="">Tên(Z - A)</option>
+                                <option value="">Giá(Thấp&gt;Cao)</option>
+                                <option value="">Giá(Cap &gt; Thấp)</option>
+                                <option value="">Đánh giá(Cao nhất)</option>
+                                <option value="">Đánh giá(Thấp nhất)</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="slidebar-open btn-color btn closemenu">
+                    <i class="fa fa-bars"></i> <span>Lọc</span>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="show-item float-left-sm">
+                    <span>Hiển thị :</span>
+                    <div class="select-item select-dropdown">
+                        <fieldset>
+                            <select name="speed" id="show-item" class="option-drop">
+                                <option value="" selected="selected">24</option>
+                                <option value="">12</option>
+                                <option value="">6</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                    <span>Mỗi trang</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-listing grid-type">
+        <div class="inner-listing">
+            <div class="row mlr_-20">
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="main-label sale-label"><span>Sale</span></div>
+                        <div class="main-label new-label"><span>New</span></div>
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img alt="Shopholic" src="images/1.jpg">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Samsung Galexy Tab</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div title="53%" class="rating-result">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img alt="Shopholic" src="images/2.jpg">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">iPhone 6s (Black)</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div title="53%" class="rating-result">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$35.00</span>
+                                    <del class="price old-price">$42.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img alt="Shopholic" src="images/3.jpg">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">iBall Headphone</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div title="53%" class="rating-result">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$35.00</span>
+                                    <del class="price old-price">$42.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img alt="Shopholic" src="images/4.jpg">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Dell Laptop Core i5</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div title="53%" class="rating-result">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$35.00</span>
+                                    <del class="price old-price">$42.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img alt="Shopholic" src="images/5.jpg">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Wood Single Table</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div title="53%" class="rating-result">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img alt="Shopholic" src="images/6.jpg">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Sofa Collection (Blue)</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div title="53%" class="rating-result">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$35.00</span>
+                                    <del class="price old-price">$42.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/7.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Office Chair (Black)</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/8.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Single Chair Sofa</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/9.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Coupe Watch</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item sold-out">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/10.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Men Wallets</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/11.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Shoes</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/12.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Handbag</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/13.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Makeup Kit</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/14.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Nail Polish</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/15.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Highliter & Bronzer</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                    <div class="product-item">
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a href="product-page.html">
+                                    <img src="images/16.jpg" alt="Shopholic">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a href="product-page.html">Lipstick</a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    <div class="rating-result" title="53%">
+                                        <span style="width:53%"></span>
+                                    </div>
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">$80.00</span>
+                                    <del class="price old-price">$120.00</del>
+                                </div>
+                                <div class="product-des">
+                                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                                </div>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a title="Add to Cart" href="cart.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                <a title="Wishlist" href="wishlist.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="pagination-bar">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

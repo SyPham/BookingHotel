@@ -1,0 +1,115 @@
+﻿@model ContactModel
+@{
+    ViewData["Title"] = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string url = Convert.ToString(ViewBag.Url);
+    var about = ViewBag.About as AboutModel;
+}
+@section metatags {
+    <vc:vc-metatag key-word="@about.MetaKeywords" description="@about.MetaDescription" />
+}
+<!-- Bread Crumb STRAT -->
+<div class="banner inner-banner1">
+    <div class="container">
+        <section class="banner-detail center-xs">
+            <h1 class="banner-title right-side float-none-xs">Liên hệ</h1>
+            <div class="bread-crumb">
+                <ul>
+                    <li><a href="/"><i class="fa fa-home"></i>Trang chủ</a>/</li>
+                    <li><span>Liên hệ</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Bread Crumb END -->
+<!-- CONTAIN START ptb-95-->
+<section class="pt-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="map">
+                    <div class="map-part">
+                        <div id="map" class="map-inner-part"></div>
+                    </div>
+                    <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=46%20Phan%20%C4%90%C3%ACnh%20Ph%C3%B9ng,%20P.T%C3%A2n%20Th%C3%A0nh,%20Q.T%C3%A2n%20Ph%C3%BA,%20TP.H%E1%BB%93%20Ch%C3%AD%20Minh+(Baby%20Monkey)&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-60 client-main align-center">
+    <div class="container">
+        <div class="contact-info">
+            <div class="row m-0">
+                <div class="col-md-4 p-0">
+                    <div class="contact-box">
+                        <div class="contact-icon contact-phone-icon"></div>
+                        <span><b>Điện thoại</b></span>
+                        <p>@about.Phone</p>
+                    </div>
+                </div>
+                <div class="col-md-4 p-0">
+                    <div class="contact-box">
+                        <div class="contact-icon contact-mail-icon"></div>
+                        <span><b>Mail</b></span>
+                        <p>@about.Email</p>
+                    </div>
+                </div>
+                <div class="col-md-4 p-0">
+                    <div class="contact-box">
+                        <div class="contact-icon contact-open-icon"></div>
+                        <span><b>Mở cửa</b></span>
+                        <p>Thứ 2 – Chủ nhật: 7:00 – 22:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ptb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="heading-part align-center">
+                    <h2 class="main_title  heading">Để lại lời nhắn!</h2>
+                </div>
+            </div>
+        </div>
+        <div class="main-form">
+            <form asp-route="contact">
+                <div class="row">
+                    <div class="col-12 mb-30">
+                        <message content="@ViewBag.Content" type="@ViewBag.Type" />
+                    </div>
+                    <div class="col-md-6 mb-30">
+                        <input type="text" required placeholder="Họ và tên" asp-for="FullName">
+                    </div>
+                    <div class="col-md-6 mb-30">
+                        <input type="email" required placeholder="Email" asp-for="Email">
+                    </div>
+                    <div class="col-md-6 mb-30">
+                        <input type="text" required placeholder="Tiêu đề" asp-for="Subject">
+                    </div>
+                    <div class="col-md-6 mb-30">
+                        <input type="text" required placeholder="Số điện thoại" asp-for="Mobi">
+                    </div>
+                    <div class="col-12 mb-30">
+                        <textarea required placeholder="Lời nhắn" rows="3" cols="30" asp-for="Content"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <div class="align-center">
+                            <button type="submit" name="submit" class="btn btn-color">Submit</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- CONTAINER END --> 

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PartnerModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+
+<section class="ptb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="responsive-part">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="heading-part">
+                                <h2 class="main_title heading">Những đối tác của chúng tôi</h2>
+                            </div>
+                            <p>
+                                Baby Monkey có lợi thế trong việc hợp tác với nhiều tập đoàn đa quốc gia, cũng như việc phân phối độc quyền cho nhiều nhãn hàng Nhật, Hàn Quốc, Thái Lan.
+                                Bên cạnh đó, Baby Monkey còn hợp tác với nhiều nhà máy hàng đầu tại Nhật, Hàn Quốc, Thái Lan để nghiên cứu và cho ra đời những sản phẩm tốt nhất dành cho trẻ em Việt Nam
+                            </p>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="partner-block light-gray-bg">
+                                <ul>
+                                    @foreach (var item in Model)
+                                    {
+                                        <li><span><img src="@item.Avatar.ToImageBrand(url)" alt="@item.Title.UrlEncode()"></span></li>
+
+                                    }
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

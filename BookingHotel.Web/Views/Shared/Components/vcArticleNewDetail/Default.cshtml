@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ArticleModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+<div class="filters-card border-bottom p-4 pt-0">
+    <div class="filters-card-header  col-xl-12" id="headingOne">
+        <h6 class="mb-0 text-gray-900">
+            <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                TIN TỨC MỚI
+            </a>
+        </h6>
+    </div>
+    <div id="" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="filters-card-body card-shop-filters">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-12 col-sm-12 mb-3">
+                    <div class="custom-card shadow-sm bg-white h-100">
+                        <div class="custom-card-image">
+                            <a asp-route-id="@item.Id"
+                               asp-route-catid="@item.ArticleCategoryId"
+                               asp-route-title="@item.Title.UrlEncode()"
+                               asp-route="article-detail">
+                                <img class="img-fluid item-img" src="@item.Thumb.ToBlogImage(url)" />
+                            </a>
+                            <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
+                                <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2160 0C1440 240 720 240 720 240H0V480H2880V0H2160Z" fill="currentColor">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <div class="custom-card-body">
+                                <h6 class="mb-1">
+                                    <a class="text-gray-900" asp-route-id="@item.Id"
+                                       asp-route-catid="@item.ArticleCategoryId"
+                                       asp-route-title="@item.Title.UrlEncode()"
+                                       asp-route="article-detail">
+                                        @item.Title
+                                    </a>
+                                </h6>
+
+                                <p class="text-gray-900">@item.Description</p>
+                            </div>
+                            <div class="custom-card-footer d-flex align-items-center">
+                                <a asp-route-id="@item.Id"
+                                   asp-route-catid="@item.ArticleCategoryId"
+                                   asp-route-title="@item.Title.UrlEncode()"
+                                   asp-route="article-detail">
+                                    Xem thêm
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

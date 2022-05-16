@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BannerModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+    var smallBanner = ViewBag.SmallBanner as IEnumerable<BannerModel>;
+}
+
+@if (Model != null) {
+
+<section class="main-wrap">
+    <div class="row">
+        <div class="col-12">
+            <!-- BANNER STRAT -->
+            <section class="banner-main">
+                <div class="banner">
+                    <div class="main-banner">
+
+                        @foreach (var item in Model)
+                        {
+                        <div class="banner-1">
+                            <img src="@item.Avatar.ToMainBannerImage(url)" alt="@item.Title.UrlEncode()">
+
+                            <div class="banner-detail">
+                                <div class="row">
+                                    <div class="col-lg-5 col-6"></div>
+                                    <div class="col-lg-7 col-6 align-center">
+                                        <div class="banner-detail-inner">
+                                            <h1 class="banner-title">@item.Title</h1>
+                                           @* <span class="offer">Soft and simple toys</span>*@
+                                            <p>@item.SubTitle</p>
+                                        </div>
+                                       @* <a class="btn big-btn btn-color" href="shop.html">Shop Now!</a>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </section>
+            <!-- BANNER END -->
+        </div>
+    </div>
+</section>
+    }

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<NotificationModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+    Layout = null;
+}
+<li class="nav-item dropdown no-arrow mx-1">
+    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" title="Có @ViewBag.Total thông báo mới" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell fa-fw"></i>
+        @if (ViewBag.Total > 0)
+        {
+
+            <span class="badge badge-danger badge-counter">@ViewBag.Total</span>
+        }
+    </a>
+
+    <div class="dropdown-list dropdown-menu dropdown-menu-right border-0 shadow-sm animated--grow-in" aria-labelledby="alertsDropdown">
+        <h6 class="dropdown-header">
+            Thông báo
+        </h6>
+        @foreach (var item in Model)
+        {
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                        <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500-500">@item.CreateTime.Value.ToString("dd/MM/yyyy")</div>
+                    <span class="font-weight-bold">@item.Title</span>
+                </div>
+            </a>
+        }
+
+
+        @*<a class="dropdown-item text-center small text-gray-500-500" href="#">Xem tất cả</a>*@
+    </div>
+</li>

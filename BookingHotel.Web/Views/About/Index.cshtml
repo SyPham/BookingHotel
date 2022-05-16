@@ -1,0 +1,45 @@
+﻿@model AboutModel
+@{
+    ViewData["Title"] = "Giới thiệu Baby Monkey";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+<!-- Bread Crumb STRAT -->
+<div class="banner inner-banner1">
+    <div class="container">
+        <section class="banner-detail center-xs">
+            <h1 class="banner-title right-side float-none-xs">Về Baby Monkey</h1>
+            <div class="bread-crumb">
+                <ul>
+                    <li><a href="/"><i class="fa fa-home"></i>Trang chủ</a>/</li>
+                    <li><span>Về Baby Monkey</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Bread Crumb END -->
+<!-- CONTAIN START -->
+
+<section class="our_story">
+    <div class="container">
+        <div class="ptb-60">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="story_detail_part">
+                        @Html.Raw(Model.Content)
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="@Model.Thumb.ToBlogImage(url)" alt="Baby Monkey" />
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</section>
+
+<vc:vc-about-brand></vc:vc-about-brand>

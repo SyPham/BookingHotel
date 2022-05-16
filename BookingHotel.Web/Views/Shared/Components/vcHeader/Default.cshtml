@@ -1,0 +1,280 @@
+﻿@using  System.Security.Claims;
+@model AboutModel
+@{
+    Layout = null;
+}
+@{
+    string url = Convert.ToString(ViewBag.Url);
+    var accountType = "";
+    var userName = "";
+    if (string.IsNullOrEmpty(User.Identity.Name) == false)
+    {
+        accountType = User.Claims.FirstOrDefault(x => x.Type.Equals("AccountType"))?.Value;
+        userName = User.Claims.FirstOrDefault(x => x.Type.Equals(ClaimTypes.NameIdentifier))?.Value;
+    }
+
+}
+<header class="navbar navbar-custom container-full-sm" id="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row m-0">
+                <div class="col-12 col-md-6 col-sm-5 p-0">
+                    <div class="top-link top-link-left select-dropdown d-none d-sm-block">
+                        @*<fieldset>
+                            <select name="speed" class="countr option-drop">
+                                <option selected="selected">Viet Nam</option>
+                            </select>
+                            <select name="speed" class="currenc option-drop">
+                                <option selected="selected">VNĐ</option>
+                            </select>
+                        </fieldset>*@
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-sm-7 p-0">
+                    <div class="top-right-link right-side d-none d-sm-block">
+                        <ul>
+                            <li class="info-link wishlist-icon content">
+                                <a href="/yeu-thich" title="Yêu thích">
+                                    <i class="fa fa-heart"></i>
+                                    Yêu thích
+                                </a>
+                            </li>
+                            @*<li class="info-link compare-icon">
+                                    <a href="compare.html" title="Compare">
+                                        <span></span>
+                                        Compare
+                                    </a>
+                                </li>
+                                <li class="info-link giftcard-icon">
+                                    <a href="#" title="Gift card">
+                                        <span></span>
+                                        Gift card
+                                    </a>
+                                </li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="container">
+            <div class="row mlr_-20 d-flex align-items-center">
+                <div class="col-md-3 col-sm-12 plr-20">
+                    <div class="header-middle-left">
+                        <div class="navbar-header float-none-sm">
+                            <a class="navbar-brand page-scroll" href="/">
+                                <img src="@Model.Logo.ToLogoImage(url)" class="logo-header" alt="@Model.Title.UrlEncode()">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-12 plr-20">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="main-right-part">
+                                <div class="header-right-part">
+                                    <div class="category-main">
+                                        <div class="main-search">
+                                            <div class="header_search_toggle desktop-view">
+                                                <form>
+                                                    <div class="search-box">
+                                                        <input class="input-text" id="txtkey" type="text" placeholder="Tìm kiếm nhanh...">
+                                                        <button type="button" class="search-btn" onclick="Search()"></button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right-part">
+                                    <ul>
+
+                                        @if (userName == "")
+                                        {
+                                            <li class="login-icon content" style="border-right:none !important">
+
+                                                <a class="content-link">
+                                                    <span class="content-icon"></span>
+                                                </a>
+                                                <div class="content-dropdown">
+                                                    <ul>
+                                                        <li class="login-icon"><a href="/dang-nhap" title="Đăng nhập"><i class="fa fa-user"></i> Đăng nhập</a></li>
+                                                        <li class="register-icon"><a href="/dang-ky" title="Đăng ký"><i class="fa fa-user-plus"></i> Đăng ký</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                        }
+                                        else
+                                        {
+                                            <li class="login-icon content">
+                                                <a class="content-link">
+                                                    <canvas id="avatar-icon" style="border-radius: 50%" width="35" height="35">
+                                                    </canvas>
+                                                    <div></div>
+                                                </a>
+                                                <div class="content-dropdown">
+                                                    <ul>
+                                                        <li class="login-icon"><a href="/dang-xuat" title="Đăng xuất"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        }
+
+                                        @if (User.Identity.Name != null)
+                                        {
+
+                                            <vc:vc-mini-cart />
+                                        }
+
+                                        <li class="side-toggle">
+                                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"><i class="fa fa-bars"></i></button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="container">
+            <div class="header-line">
+                <div class="row position-r mlr_-20">
+                    <vc:vc-product-category></vc:vc-product-category>
+                    <div class="col-lg-9 plr-20 bottom-part">
+                        <div class="nav_sec position-r float-none-md">
+                            <div class="mobilemenu-title mobilemenu">
+                                <span>Menu</span>
+                                <i class="fa fa-bars pull-right"></i>
+                            </div>
+                            <div class="mobilemenu-content">
+                                <ul class="nav navbar-nav" id="menu-main">
+                                    <li>
+                                        <a href="/"><span>Trang chủ</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/gioi-thieu"><span>Về Baby Monkey</span></a>
+                                    </li>
+                                    <vc:vc-article-category></vc:vc-article-category>
+                                    <li>
+                                        <a href="/lien-he"><span>Liên hệ</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-links">
+        <div class="popup-links-inner">
+            <ul>
+                <li class="categories">
+                    <a class="popup-with-form" href="#categories_popup"><span class="icon"></span><span class="icon-text">Danh mục</span></a>
+                </li>
+                @if (userName != "")
+                {
+                    <li class="cart-icon">
+                        <a class="popup-with-form" href="#cart_popup"><span class="icon"></span><span class="icon-text">Giỏ hàng</span></a>
+                    </li>
+                    <li class="account">
+                        <a class="popup-with-form" href="#account_popup"><span class="icon"></span><span class="icon-text">Tài khoản</span></a>
+                    </li>
+                }
+                <li class="search">
+                    <a class="popup-with-form" href="#search_popup"><span class="icon"></span><span class="icon-text">Tìm kiếm</span></a>
+                </li>
+                <li class="scroll scrollup">
+                    <a href="#"><span class="icon"></span><span class="icon-text">Đầu trang</span></a>
+                </li>
+            </ul>
+        </div>
+        <div id="popup_containt">
+            @*categories_popup*@
+                <vc:vc-category-popup></vc:vc-category-popup>
+            @if (userName != "")
+            {
+                <vc:vc-cart-popup></vc:vc-cart-popup>
+            }
+
+            <div id="account_popup" class="white-popup-block mfp-hide popup-position">
+                <div class="popup-title">
+                    <h2 class="main_title heading"><span>Tài khoản</span></h2>
+                </div>
+                <div class="popup-detail">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a href="/tai-khoan">
+                                <div class="account-inner mb-30">
+                                    <i class="fa fa-user"></i><br /> <span>Tài khoản</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="/dang-ky">
+                                <div class="account-inner mb-30">
+                                    <i class="fa fa-user-plus"></i><br />
+                                    <span>Đăng ký</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="/gio-hang">
+                                <div class="account-inner mb-30">
+                                    <i class="fa fa-shopping-bag"></i><br />
+                                    <span>Giỏ hàng</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="/doi-mat-khau">
+                                <div class="account-inner">
+                                    <i class="fa fa-key"></i><br />
+                                    <span>Đổi mật khẩu</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="/yeu-thich">
+                                <div class="account-inner">
+                                    <i class="fa fa-heart"></i><br />
+                                    <span>Yêu thích</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="/dang-xuat">
+                                <div class="account-inner">
+                                    <i class="fa fa-sign-out-alt"></i><br />
+                                    <span>Đăng xuất</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="search_popup" class="white-popup-block mfp-hide popup-position">
+                <div class="popup-title">
+                    <h2 class="main_title heading"><span>Tìm kiếm</span></h2>
+                </div>
+                <div class="popup-detail">
+                    <div class="main-search">
+                        <div class="header_search_toggle desktop-view">
+                            <div>
+                                <div class="search-box">
+                                    <input class="input-text" id="txtkey" type="text" placeholder="Tìm kiếm nhanh...">
+                                    <button class="search-btn" type="button" onclick="Search()"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

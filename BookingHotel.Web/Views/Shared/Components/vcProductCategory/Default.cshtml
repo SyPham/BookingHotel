@@ -1,0 +1,48 @@
+﻿@model List<HierarchyNode<MainMenuModel>>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+<div class="col-lg-3 plr-20 bottom-part position-initial">
+    <div class="sidebar-menu-dropdown home">
+        <a class="btn-sidebar-menu-dropdown"> Danh mục <i class="fa fa-bars"></i></a>
+        <div id="cat" class="cat-dropdown">
+            <div class="sidebar-contant">
+                <div id="menu" class="navbar-collapse collapse">
+                    <div class="top-right-link mobile d-block d-sm-none">
+                        <ul>
+                            <li class="info-link wishlist-icon content">
+                                <a title="Wishlist" href="/yeu-thich">
+                                    <span></span>
+                                    Yêu thích
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="nav navbar-nav ">
+                        @foreach (var item in Model)
+                        {
+                            <li class="level @(item.HasChildren ? "sub-megamenu" : "")">
+                                <span class="@(item.HasChildren ? "opener plus" : "")"></span>
+                                <a href="/cua-hang/@(item.Entity.Id)" class="page-scroll">@item.Entity.Title</a>
+                                <div class="@(item.HasChildren ? "megamenu mobile-sub-menu" : "")" style="width:430px;">
+                                    <div class="megamenu-inner-top">
+                                        <ul class="sub-menu-level1">
+                                            @foreach (var sub in item.ChildNodes)
+                                            {
+                                                <li class="level2 mb-2">
+                                                    <a href="/cua-hang/@(sub.Entity.Id)"><span>■</span>@sub.Entity.Title</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<PartnerModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+
+<div class="brand-logo">
+    <div class="container">
+        <div class="row brand">
+            <div class="col-md-12">
+                <div id="brand-logo" class="owl-carousel align_center">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item"><a href="/"><img src="@item.Avatar.ToImageBrand(url)" alt="@item.Title.UrlEncode()"></a></div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

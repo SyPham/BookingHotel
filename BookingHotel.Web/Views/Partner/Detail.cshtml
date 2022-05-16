@@ -1,0 +1,437 @@
+﻿@model PartnerModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="restaurant-detailed-banner">
+    <div class="text-center">
+        <img class="img-fluid cover" src="images/restaurant-detailed-banner.png">
+    </div>
+    <div class="restaurant-detailed-header">
+        <div class="container">
+            <div class="row d-flex align-items-end">
+                <div class="col-lg-8">
+                    <div class="restaurant-detailed-header-left d-flex align-items-center">
+                        <img class="img-fluid-pic mr-3 float-left" alt="Osahan Deel" src="images/temb/phuclong.jpg">
+                        <div>
+                            <h3 class="text-gray-900 mb-2">Phúc Long</h3>
+                            <p class="mb-1">
+                                <span class="star-rating">
+                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                    <a href="#"><i class="icofont-ui-rating"></i></a>
+                                </span> / <i class="icofont-user"></i> 50 <i class="ml-3 icofont-speech-comments"></i> 91 <span class="badge badge-primary ml-3">Cà phê - Trà Sữa</span>
+                            </p>
+                            <p class="mb-0">
+                                <i class="icofont-location-pin"></i> 60 cửa hàng trong hệ thống
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="restaurant-detailed-header-right text-right">
+                        <button class="btn btn-success" type="button">
+                            <i class="icofont-clock-time"></i> Thời gian chờ: 25–35 Phút
+                        </button>
+                        <h6 class="mb-0 restaurant-detailed-ratings font-weight-normal">
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="custom-nav bg-white border-top shadow-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span class="restaurant-detailed-action-btn float-right">
+                    <button class="btn btn-danger text-white btn-sm border-light-btn" type="button"><i class="icofont-heart text-white"></i> Yêu thích</button>
+                    <button class="btn btn-primary btn-sm" type="button"><i class="icofont-location-arrow"></i> Chia sẽ</button>
+                </span>
+                <ul class="nav" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <span class="nav-link h6 text-gray-900 active" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab" aria-controls="pills-about" aria-selected="true">Giới thiệu</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link h6 text-gray-900" id="pills-branch-tab" data-toggle="pill" href="#pills-branch" role="tab" aria-controls="pills-branch" aria-selected="false">Cửa hàng</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link h6 text-gray-900" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">Xếp hạng và đánh giá</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="offer-dedicated-body">
+    <div class="container py-lg-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="offer-dedicated-body-left">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
+                            <div id="about" class="bg-white rounded shadow-sm p-4 mb-4">
+                                <h6 class="sg-section-title mb-4" id="gioithieu">
+                                    Dùng nước tại Phúc Long Coffee &amp; Tea House - Thanh toán tiện lợi với VietCoupons
+                                </h6>
+                                <div class="sg-section-content sg-post">
+                                    <p><span>Ra đời năm 1968 trên tại cao nguyên chè danh tiếng Bảo Lộc (Lâm Đồng), <a href="https://phuclong.com.vn/">Phúc Long</a> kỳ vọng mang đến những sản phẩm trà và cà phê chất lượng cao, lưu giữ hương vị truyền thống Việt Nam kết hợp với phong cách thưởng thức hiện đại.</span></p>
+
+                                    <p><span>Từ khát khao mang đến những thức uống tươi ngon, đậm vị được pha chế trực tiếp, phục vụ tận tay khách hàng với phong cách hiện đại và mức giá hợp lý, cửa hàng Phúc Long Coffee &amp; Tea đầu tiên đã ra mắt tại TTTM Crescent Mall Quận 7. Đây là sự kiện đánh dấu bước chuyển mình trong lịch sử phát triển của Phúc Long, từng bước trở thành thương hiệu Việt hiếm hoi chính thức tham gia vào lĩnh vực Food &amp; Beverage với cửa hàng hoạt động theo mô hình tự phục vụ trong không gian hiện đại, đẳng cấp và nổi bật.</span></p>
+                                    <p><img class="img-fluid" src="images/temb/phuclong1.jpeg" alt="Alternate Text" /></p>
+                                    <p>
+                                        <span>
+                                            Phúc Long tin rằng từng sản phẩm trà và cà phê sẽ càng thêm hảo hạng khi được tạo ra từ sự phấn đấu không ngừng cùng niềm đam mê. Và chính kết nối dựa trên niềm tin, sự trung thực và tin yêu góp phần mang đến những nét đẹp trong văn hóa thưởng trà &amp; cà phê ngày càng bay cao và vươn xa. Tiếp nối nỗ lực, từ một cửa hàng đầu tiên, đến nay, Phúc Long xây dựng hơn 44 cửa hàng trên khu vực TP.HCM, Bình Dương, Đà Nẵng, Nha Trang, Hà Nội phục vụ những thức uống tươi ngon từ trà và cà phê. Không dừng lại tại đó, Phúc Long tiếp tục định hướng phát triển mở rộng hệ thống cửa hàng trải dài từ Nam ra Bắc. Tăng độ phủ của sản phẩm đến tất cả các hệ thống: siêu thị, cửa hàng tiện lợi…<br>
+                                            <br>
+                                            Hiện tại, bạn có thể thanh toán bằng <a href="#">VietCoupons</a> tại các chi nhánh của Phúc Long, đồng thời được tích điểm để được hưởng các ưu đãi vô cùng hấp dẫn.
+                                        </span>
+                                    </p>
+                                    <p style="text-align:justify"><span style="color:#008000"><span style="font-size:20px"><strong>TẦM NHÌN </strong> </span> </span></p>
+
+                                    <p><strong>1.</strong> Với khát vọng không ngừng mở rộng thị trường - phát triển bền vững, Phúc Long phấn đấu trở thành công ty chuyên sản xuất và xuất khẩu trà, cà phê có giá trị cao tại Việt Nam.</p>
+
+                                    <p><strong>2.</strong> Phúc Long mong muốn tạo nên một thương hiệu Việt với đẳng cấp và chất lượng được thể hiện trong từng sản phẩm, qua đó từng bước khẳng định vị thế trên thị trường quốc tế.</p>
+
+                                    <p><span style="color:#008000"><span style="font-size:20px"><strong>SỨ MỆNH </strong> </span> </span></p>
+
+                                    <p><strong>1.</strong> <strong> Trở thành người tiên phong của thời đại </strong> với những ý tưởng sáng tạo đi đầu trong ngành trà và cà phê.</p>
+
+                                    <p><strong>2.</strong> <strong> Cùng đưa thương hiệu tỏa sáng</strong>, tạo động lực cho nhau, cùng biến ý tưởng thành hiện thực bằng tinh thần gắn kết, tương tác, biết lắng nghe và&nbsp;tôn trọng.</p>
+
+                                    <p><strong>3.</strong> <strong> Để tạo niềm vui và tình cảm cho khách hàng</strong>, mỗi chúng ta phải thường xuyên liên tục tỏa sáng. Không được để cho năng lực của bản thân bị&nbsp;ngủ quên, không ngừng thách thức khó khăn, phải luôn luôn tự đổi mới bản thân.&nbsp;</p>
+
+                                    <p><strong>4.</strong> <strong> Tạo ra giá trị cao </strong> bằng sự thấu hiểu, đồng cảm và những đề xuất có giá trị thật sự, thỏa mãn sự hài lòng cho khách hàng.</p>
+
+                                    <p><span style="color:#008000"><span style="font-size:20px"><strong>GIÁ TRỊ CỐT LÕI </strong> </span> </span></p>
+
+                                    <p><strong>1. Đối với khách hàng</strong>: Cam kết cung cấp sản phẩm chất lượng và dịch vụ tốt nhất.&nbsp;</p>
+
+                                    <p><strong>2. Đối với nhân viên</strong>: Xây dựng môi trường làm việc chuyên nghiệp, năng động, sáng tạo và nhân văn,&nbsp;tạo điều kiện thu nhập cao và cơ hội phát triển công bằng.</p>
+
+                                    <p><strong>3. Đối với xã hội</strong>: Hài hòa lợi ích doanh nghiệp với lợi ích xã hội, đóng góp tích cực vào các hoạt động hướng về cộng đồng, thể hiện tinh thần trách nhiệm đối với xã hội.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-branch" role="tabpanel" aria-labelledby="pills-branch-tab">
+                            <div class="col-md-12 bg-white rounded shadow-sm p-4">
+                                <form class="form-inline">
+                                    <label class="my-1 mr-2 h6" for="inlineFormCustomSelect">Cửa hàng</label>
+                                    <select class="custom-select mr-2">
+                                        <option selected="">Tỉnh/Thành...</option>
+                                        <option value="1">Thành phố Hồ Chí Minh</option>
+                                        <option value="2">Bình Dương</option>
+                                        <option value="3">Đồng Nai</option>
+                                    </select>
+                                    <select class="custom-select">
+                                        <option selected="">Quận/Huyện...</option>
+                                        <option value="1">Quận Phú Nhuận</option>
+                                        <option value="2">Quận Bình Thạnh</option>
+                                        <option value="3">Quận Gò Vấp</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div id="branch" class="bg-white rounded shadow-sm p-4 mb-4">
+                                <div class="list-design-card active p-3">
+                                    <div>
+                                        <a href="#" class="float-right text-info"><i class="icofont-google-map h4"></i></a>
+                                        <div class="media">
+                                            <img class="mr-3" src="images/user-coupans/phuclong.jpg" alt="The Coffee House">
+                                            <div class="media-body">
+                                                <label class="mb-1 text-gray-600">Phúc Long Lý Thường Kiệt</label>
+                                                <p class="mb-0 text-gray-900">247-249 Lý Thường Kiệt, Phường 6, Quận Tân Bình, TP.HCM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-design-card active p-3">
+                                    <div>
+                                        <a href="#" class="float-right text-info"><i class="icofont-google-map h4"></i></a>
+                                        <div class="media">
+                                            <img class="mr-3" src="images/user-coupans/phuclong.jpg" alt="starbucks">
+                                            <div class="media-body">
+                                                <label class="mb-1 text-gray-600">Phúc Long Trần Xuân Soạn</label>
+                                                <p class="mb-0 text-gray-900">66 - 68 Trần Xuân Soạn, Ngô Thì Nhậm, Hai Bà Trưng, Hà Nội, Việt Nam</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-design-card active p-3 mb-0">
+                                    <div>
+                                        <a href="#" class="float-right text-info"><i class="icofont-google-map h4"></i></a>
+                                        <div class="media">
+                                            <img class="mr-3" src="images/user-coupans/phuclong.jpg" alt="ministop">
+                                            <div class="media-body">
+                                                <label class="mb-1 text-gray-600">Phúc Long Centre Point</label>
+                                                <p class="mb-0 text-gray-900">Tầng Trệt, Centre Point Building, Số 106 Nguyễn Văn Trỗ, Phường 8, Quận Phú Nhuận, Thành Phố Hồ Chí Minh</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-design-card active p-3 mb-0">
+                                    <div>
+                                        <a href="#" class="float-right text-info"><i class="icofont-google-map h4"></i></a>
+                                        <div class="media">
+                                            <img class="mr-3" src="images/user-coupans/phuclong.jpg" alt="ministop">
+                                            <div class="media-body">
+                                                <label class="mb-1 text-gray-600">Phúc Long Phổ Quang</label>
+                                                <p class="mb-0 text-gray-900">119 Phổ Quang, Phường 9, Quận Phú Nhuận, Thành Phố Hồ Chí Minh</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-design-card active p-3 mb-0">
+                                    <div>
+                                        <a href="#" class="float-right text-info"><i class="icofont-google-map h4"></i></a>
+                                        <div class="media">
+                                            <img class="mr-3" src="images/user-coupans/phuclong.jpg" alt="ministop">
+                                            <div class="media-body">
+                                                <label class="mb-1 text-gray-600">Phúc Long Đinh Tiên Hoàng</label>
+                                                <p class="mb-0 text-gray-900">157-159 Nguyễn Thái Học, Phường Phạm Ngũ Lão, Quận 1, Thành Phố Hồ Chí Minh</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-design-card active p-3 mb-0">
+                                    <div>
+                                        <a href="#" class="float-right text-info"><i class="icofont-google-map h4"></i></a>
+                                        <div class="media">
+                                            <img class="mr-3" src="images/user-coupans/phuclong.jpg" alt="ministop">
+                                            <div class="media-body">
+                                                <label class="mb-1 text-gray-600">Phúc Long Nguyễn Thị Minh Khai</label>
+                                                <p class="mb-0 text-gray-900">21-23 Nguyễn Thị Minh Khai, Phường Bến Nghé, Quận 1, Thành Phố Hồ Chí Minh</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-design-card active p-3 mb-0">
+                                    <div>
+                                        <a href="#" class="float-right text-info"><i class="icofont-google-map h4"></i></a>
+                                        <div class="media">
+                                            <img class="mr-3" src="images/user-coupans/phuclong.jpg" alt="ministop">
+                                            <div class="media-body">
+                                                <label class="mb-1 text-gray-600">Phúc Long Bitexco</label>
+                                                <p class="mb-0 text-gray-900">4F-16, Khu Vực Ẩm Thực Food Creative, Lầu 4, Toà Nhà Bitexco, Số 2 Hải Triều, Phường Bến Nghé, Quận 1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
+                            <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating">
+                                <h5 class="mb-0 mb-4 text-gray-900">Xếp hạng và đánh giá</h5>
+                                <div class="graph-star-rating-header">
+                                    <div class="star-rating">
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating"></i></a> <b class="text-gray-800 ml-2">120</b>
+                                    </div>
+                                    <p class="text-gray-800 mb-4 mt-2">Xếp hạng 4 trên 5</p>
+                                </div>
+                                <div class="graph-star-rating-body">
+                                    <div class="rating-list">
+                                        <div class="rating-list-left text-gray-800">
+                                            5 Sao
+                                        </div>
+                                        <div class="rating-list-center">
+                                            <div class="progress rounded">
+                                                <div style="width: 56%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rating-list-right text-gray-800">56%</div>
+                                    </div>
+                                    <div class="rating-list">
+                                        <div class="rating-list-left text-gray-800">
+                                            4 Sao
+                                        </div>
+                                        <div class="rating-list-center">
+                                            <div class="progress rounded">
+                                                <div style="width: 23%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rating-list-right text-gray-800">23%</div>
+                                    </div>
+                                    <div class="rating-list">
+                                        <div class="rating-list-left text-gray-800">
+                                            3 Sao
+                                        </div>
+                                        <div class="rating-list-center">
+                                            <div class="progress rounded">
+                                                <div style="width: 11%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rating-list-right text-gray-800">11%</div>
+                                    </div>
+                                    <div class="rating-list">
+                                        <div class="rating-list-left text-gray-800">
+                                            2 Sao
+                                        </div>
+                                        <div class="rating-list-center">
+                                            <div class="progress rounded">
+                                                <div style="width: 2%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rating-list-right text-gray-800">02%</div>
+                                    </div>
+                                    <div class="rating-list">
+                                        <div class="rating-list-left text-gray-800">
+                                            1 Sao
+                                        </div>
+                                        <div class="rating-list-center">
+                                            <div class="progress rounded">
+                                                <div style="width: 0%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rating-list-right text-gray-800">0%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+                                <h5 class="mb-1 text-gray-900">Tất cả xếp hạng và đánh giá</h5>
+                                <div class="reviews-members pt-4 pb-4">
+                                    <div class="media">
+                                        <a href="#"><img alt="Generic placeholder image" src="images/user/1.png" class="mr-3 rounded-pill w-40"></a>
+                                        <div class="media-body">
+                                            <div class="reviews-members-header">
+                                                <span class="star-rating float-right">
+                                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                    <a href="#"><i class="icofont-ui-rating"></i></a>
+                                                </span>
+                                                <h6 class="mb-0 text-gray-800">
+                                                    <a class="text-gray-900" href="#">0985******</a>
+                                                </h6>
+                                                <p class="text-gray-600 small">01/06/2021</p>
+                                            </div>
+                                            <div class="reviews-members-body">
+                                                <p>
+                                                    Đầu tiên, là về dịch vụ vận chuyển thì rất là nhanh dù đang trong mùa dịch. Săn được giá sale nên cũng rất là vui.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="reviews-members pt-4 pb-4">
+                                    <div class="media">
+                                        <a href="#"><img alt="Generic placeholder image" src="images/user/6.png" class="mr-3 rounded-pill w-40"></a>
+                                        <div class="media-body">
+                                            <div class="reviews-members-header">
+                                                <span class="star-rating float-right">
+                                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                    <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                    <a href="#"><i class="icofont-ui-rating"></i></a>
+                                                </span>
+                                                <h6 class="mb-0 text-gray-800">
+                                                    <a class="text-gray-900" href="#">0364******</a>
+                                                </h6>
+                                                <p class="text-gray-600 small">01/06/2021</p>
+                                            </div>
+                                            <div class="reviews-members-body">
+                                                <p>
+                                                    Đầu tiên, là về dịch vụ vận chuyển thì rất là nhanh dù đang trong mùa dịch. Săn được giá sale nên cũng rất là vui.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <a class="text-center w-100 d-block mt-4 font-weight-bold" href="#">
+                                    Xem tất cả
+                                </a>
+                            </div>
+                            <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
+                                <h5 class="mb-4  text-gray-900">Để lại bình luận</h5>
+                                <p class="mb-2">Xếp hạng địa điểm</p>
+                                <div class="mb-4">
+                                    <span class="star-rating">
+                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                    </span>
+                                </div>
+                                <form>
+                                    <div class="form-group">
+                                        <label>Ý kiến của bạn</label>
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group mb-0 text-right">
+                                        <button class="btn btn-primary" type="button"> Gửi bình luận </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="border rounded bg-white shadow-sm p-4 mb-4">
+                    <h5 class="mb-3 text-gray-900">THƯƠNG HIỆU LIÊN QUAN</h5>
+                    <div>
+                        <div class="list-design-card active p-3">
+                            <a href="partner-detail.html">
+                                <div class="media">
+                                    <img class="mr-3" src="images/user-coupans/the-coffee-house.jpg" alt="The Coffee House">
+                                    <div class="media-body">
+                                        <h6 class="mb-1 text-gray-900">The Coffee House</h6>
+                                        <p class="mb-0 text-gray-500">Chuỗi cửa hàng cà phê, trà & bánh</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="list-design-card active p-3">
+                            <a href="partner-detail.html">
+                                <div class="media">
+                                    <img class="mr-3" src="images/user-coupans/starbucks.png" alt="starbucks">
+                                    <div class="media-body">
+                                        <h6 class="mb-1 text-gray-900">Starbucks</h6>
+                                        <p class="mb-0 text-gray-500">Chuỗi cửa hàng trà, cà phê, & bánh</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="list-design-card active p-3 mb-0">
+                            <a href="partner-detail.html">
+                                <div class="media">
+                                    <img class="mr-3" src="images/user-coupans/ministop.jpg" alt="ministop">
+                                    <div class="media-body">
+                                        <h6 class="mb-1 text-gray-900">MINI STOP</h6>
+                                        <p class="mb-0 text-gray-500">Chuỗi cửa hàng tiện lợi</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pt-2 mb-4">
+                    <img class="img-fluid" src="images/temb/ads.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ProductModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+<div class="filters-card border-bottom p-4 pt-0">
+    <div class="filters-card-header col-xl-12" id="headingOne">
+        <h6 class="mb-0 text-gray-900">
+            <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                MÃ GIẢM GIÁ
+            </a>
+        </h6>
+    </div>
+    <div id="" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="filters-card-body card-shop-filters">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-12 col-sm-12 mb-3">
+                    <div class="custom-card shadow-sm h-100">
+                        <div class="custom-card-image">
+                            <a asp-route-id="@item.Id"
+                               asp-route-catid="@item.ProductCategoryId"
+                               asp-route-title="@item.Title.UrlEncode()"
+                               asp-route="product-detail">
+                                <img class="img-fluid item-img" src="@item.Thumb.ToImage(url)">
+                            </a>
+
+                            <div class="button-g-btn button-g-btn-up">
+                                <img class="img-fluid" src="@item.ObjPartner.Thumb.ToImage(url)">
+                                <span>@item.ObjPartner.Title</span>
+                            </div>
+                        </div>
+                        <div class="p-3 pt-4">
+                            <div class="custom-card-body">
+                                <h6 class="mb-3">
+                                    <a asp-route-id="@item.Id"
+                                       asp-route-catid="@item.ProductCategoryId"
+                                       asp-route-title="@item.Title.UrlEncode()"
+                                       asp-route="product-detail">
+                                        @item.Title
+                                    </a>
+                                </h6>
+                                <p class="text-gray-500 mb-2">
+                                    <i class="icofont-price"></i>
+                                    @if (item.IsSale)
+                                    {
+                                        <s>@item?.OldPrice.ToCurrency()</s>
+                                    }
+
+                                    <span class="text-gray-600 font-weight-bold">@item?.Price.ToCurrency()</span>
+                                </p>
+                                @if (item.IsSale)
+                                {
+                                    <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau @((item.SaleDeadLine - item.SaleStart).Value.TotalDays) ngày</p>
+                                }
+                            </div>
+                            <div class="custom-card-footer d-flex align-items-center">
+                                <span class="text-danger">
+                                    <a asp-route-id="@item.Id"
+                                       asp-route-catid="@item.ProductCategoryId"
+                                       asp-route-title="@item.Title.UrlEncode()"
+                                       asp-route="product-detail">
+                                        Xem thêm
+                                    </a>
+                                </span>
+                               
+                                    <a asp-route="addcart"
+                                       asp-route-productid="@item.Id"
+                                       class="btn btn-sm btn-white ml-auto text-danger"><i class="icofont-cart"></i>Mua ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

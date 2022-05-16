@@ -1,0 +1,113 @@
+﻿@model List<ProductModel>
+@using  System.Security.Claims;
+@{
+    ViewData["Title"] = "Sản phẩm yêu thích";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string url = Convert.ToString(ViewBag.Url);
+
+}
+@section metatags {
+    <vc:vc-metatag key-word="" description="" />
+}
+<section class="user-panel-body py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-sm-4">
+                <vc:vc-profile-left />
+            </div>
+            <div class="col-xl-9 col-sm-8">
+                <div class="user-panel-body-right">
+                    <div id="mc" class="user-panel-tab-view mb-4">
+                        <div class="shadow-sm rounded overflow-hidden mb-3">
+                            <div class="p-4 bg-white">
+                                <h5 class="mb-0 text-gray-900">Danh sách yêu thích</h5>
+                            </div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all">Tất cả</a>
+                                </li>
+                                @*<li class="nav-item">
+                                        <a class="nav-link" id="notUsed-tab" data-toggle="tab" href="#notUsed">Chưa sử dụng</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="used-tab" data-toggle="tab" href="#used">Đã sử dụng</a>
+                                    </li>*@
+                            </ul>
+
+                        </div>
+                        <div>
+                            <div class="tab-content" id="profileRight">
+                                <div class="tab-pane fade show active" id="all" data-toggle="tab">
+                                    <div class="row">
+
+                                        @foreach (var item in Model)
+                                        {
+                                            <div class="col-xl-4 col-sm-6">
+                                                <div class="custom-card shadow-sm h-100 mb-2">
+                                                    <div class="custom-card-image">
+                                                        <a asp-route-id="@item.Id"
+                                                           asp-route-catid="@item.ProductCategoryId"
+                                                           asp-route-title="@item.Title.UrlEncode()"
+                                                           asp-route="product-detail">
+                                                            <img class="img-fluid item-img" src="@item.Thumb.ToImage(url)">
+                                                        </a>
+                                                        <div class="button-g-btn button-g-btn-up">
+                                                            <img class="img-fluid" src="@item.ObjPartner.Thumb.ToImage(url)">
+                                                            <span>@item.ObjPartner.Title</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="p-3 pt-4">
+                                                        <div class="custom-card-body">
+                                                            <h6 class="mb-3">
+                                                                <a class="text-gray-900" asp-route-id="@item.Id"
+                                                                   asp-route-catid="@item.ProductCategoryId"
+                                                                   asp-route-title="@item.Title.UrlEncode()"
+                                                                   asp-route="product-detail">
+                                                                    @item.Title
+                                                                </a>
+                                                            </h6>
+                                                            <p class="text-gray-500 mb-2">
+                                                                <i class="icofont-price"></i>
+                                                                @if (item.IsSale)
+                                                                {
+                                                                    <s>@item?.OldPrice.ToCurrency()</s>
+                                                                }
+
+                                                                <span class="text-gray-600 font-weight-bold">@item?.Price.ToCurrency()</span>
+                                                            </p>
+                                                            @if (item.IsSale)
+                                                            {
+                                                                <p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau @((item.SaleDeadLine - item.SaleStart).Value.TotalDays) ngày</p>
+                                                            }
+                                                        </div>
+                                                        <div class="custom-card-footer d-flex align-items-center">
+                                                            <span class="text-danger">
+                                                                <a asp-route-id="@item.Id"
+                                                                   asp-route-catid="@item.ProductCategoryId"
+                                                                   asp-route-title="@item.Title.UrlEncode()"
+                                                                   asp-route="product-detail">
+                                                                    Xem thêm
+                                                                </a>
+                                                            </span>
+                                                            <a asp-route="addcart"
+                                                               asp-route-productid="@item.Id"
+                                                               class="btn btn-sm btn-white ml-auto text-danger"><i class="icofont-cart"></i>Mua ngay</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="notUsed" data-toggle="tab">.2..</div>
+                                <div class="tab-pane fade" id="used" data-toggle="tab">..3.</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ArticleCategoryModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+@if (Model != null)
+{
+    string path1 = $"/tin-tuc/1/{@Model.First().Id}/{@Model.First().Title.UrlEncode()}";
+
+    <li class="level dropdown">
+    <span class="opener plus"></span>
+    <a href="@path1">
+        <span>Tin tức</span>
+    </a>
+    <div class="megamenu mobile-sub-menu">
+        <div class="megamenu-inner-top">
+            <ul class="sub-menu-level1">
+                <li class="level2">
+                    <ul class="sub-menu-level2 ">
+                        @foreach (var item in Model)
+                        {
+                            string path = $"/tin-tuc/1/{@item.Id}/{@item.Title.UrlEncode()}";
+                            <li class="level3">
+                                <a href="@path">
+                                    <span>■</span>@item.Title
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</li>
+   
+}
+else
+{
+    <li class="level">
+        <a href="/tin-tuc"><span>Tin tức</span></a>
+    </li>
+}

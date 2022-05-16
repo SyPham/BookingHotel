@@ -1,0 +1,156 @@
+﻿@model X.PagedList.IPagedList<ProductModel>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string url = Convert.ToString(ViewBag.Url);
+    ViewData["Title"] = "Sản phẩm yêu thích";
+}
+@section metatags {
+    <vc:vc-metatag key-word="" description="" />
+}
+
+<!-- Bread Crumb STRAT -->
+<div class="banner inner-banner1">
+    <div class="container">
+        <section class="banner-detail center-xs">
+            <h1 class="banner-title right-side float-none-xs">Sản phẩm yêu thích</h1>
+            <div class="bread-crumb">
+                <ul>
+                    <li><a href="/"><i class="fa fa-home"></i>Trang chủ</a>/</li>
+                    <li><span>Sản phẩm yêu thích</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Bread Crumb END -->
+
+
+<!-- CONTAIN START -->
+<section class="ptb-60">
+    <div class="container">
+        <div id="content" class="col-xl-12 col-lg-12 p-0 pl-10">
+            <div class="product-listing grid-type">
+                <div class="inner-listing">
+                    <div class="row mlr_-20">
+                        @if (Model.Count > 0)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-md-3 col-6 plr-20 item-width mb-20">
+
+                                    <div class="product-item mb-20">
+                                        <div class="main-label sale-label"><span>Sale</span></div>
+                                        <div class="product-item-inner">
+                                            <div class="product-image">
+                                                <a asp-route-id="@item.Id"
+                                                   asp-route-catid="@item.ProductCategoryId"
+                                                   asp-route-title="@item.Title.UrlEncode()"
+                                                   asp-route="product-detail">
+                                                    <img class="img-fluid item-img" src="@item.Thumb.ToImage(url)">
+                                                </a>
+                                                <div class="product-detail-inner">
+                                                    <div class="detail-inner-left align-center">
+                                                        <ul>
+                                                            <li class="pro-cart-icon">
+                                                                <a asp-route="addcart" title="Mua ngay"
+                                                                   asp-route-productid="@item.Id"><i class="icofont-cart"></i><span></span></a>
+                                                            </li>
+                                                            <li class="pro-wishlist-icon">
+                                                                @if (item.IsWishlist)
+                                                                {
+
+                                                                    <a title="Bỏ yêu thích" onclick="DeleteWishlist(@item.Id)">
+                                                                        <span></span>
+                                                                    </a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a title="yêu thích" onclick="Wishlist(@item.Id)">
+                                                                        <span></span>
+                                                                    </a>
+                                                                }
+                                                            </li>
+                                                            @*<li class="pro-compare-icon">
+                                                <a title="Compare" href="compare.html">
+                                                    <span></span>
+                                                </a>
+                                            </li>*@
+                                                            <li class="pro-quickview-icon">
+                                                                <a title="Quick View" href="#product_popup" class="popup-with-product">
+                                                                    <span></span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item-details">
+                                                <div class="product-item-name">
+                                                    <a class="text-gray-900" asp-route-id="@item.Id"
+                                                       asp-route-catid="@item.ProductCategoryId"
+                                                       asp-route-title="@item.Title.UrlEncode()"
+                                                       asp-route="product-detail">
+                                                        @item.Title
+                                                    </a>
+                                                </div>
+                                                <div class="rating-summary-block">
+                                                    <div title="53%" class="rating-result">
+                                                        <span style="width:53%"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="price-box">
+                                                    <span class="price">@item.Price.ToCurrency()</span>
+                                                    @if (item.OldPrice.HasValue && item.OldPrice > 0)
+                                                    {
+
+                                                        <del class="price old-price">@item.OldPrice.ToCurrency()</del>
+                                                    }
+                                                </div>
+                                                <div class="product-des">
+                                                    <p>@item.Description</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            }
+                        }
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            @if (Model.PageCount > 1)
+                            {
+                                    @Html.PagedListPager(Model
+                                   , page => Url.Action("Index"
+                                   , new { page = page }),
+                                   new PagedListRenderOptions
+                                   {
+                                       LinkToFirstPageFormat = "<<",
+                                       LinkToPreviousPageFormat = "<",
+                                       LinkToNextPageFormat = ">",
+                                       LinkToLastPageFormat = ">>",
+                                       DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                                       MaximumPageNumbersToDisplay = 8,
+                                       DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                                       DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                                       DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                                       DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                       LiElementClasses = new string[] { "page-item" },
+                                       PageClasses = new string[] { "page-link" }
+                                   });
+
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTAINER END --> 

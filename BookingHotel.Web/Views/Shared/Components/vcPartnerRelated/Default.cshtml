@@ -1,0 +1,29 @@
+﻿@model IEnumerable<PartnerModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+
+<div class="border rounded bg-white shadow-sm p-4 mb-4">
+    <h5 class="mb-3 text-gray-900">THƯƠNG HIỆU LIÊN QUAN</h5>
+
+    <div>
+
+
+
+        @foreach (var item in Model)
+        {
+            <div class="list-design-card active p-3">
+                <a href="partner-detail.html">
+                    <div class="media">
+                        <img class="mr-3" src="@item.Thumb.ToImageBrand(url)" alt="@item.Title">
+                        <div class="media-body">
+                            <h6 class="mb-1 text-gray-900">@item.Title</h6>
+                            <p class="mb-0 text-gray-500">@item.Description</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+</div>

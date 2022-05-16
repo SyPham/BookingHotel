@@ -1,0 +1,14 @@
+﻿@model IEnumerable<BannerModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+@if (Model != null)
+{
+
+    @foreach (var item in Model)
+    {
+        <div class="text-center pt-2 mb-4">
+            <img class="img-fluid" src="@item.Thumb.ToImageBannerRight(url)">
+        </div>
+    }
+}

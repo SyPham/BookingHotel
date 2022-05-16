@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section metatags {
+    <vc:vc-metatag key-word="" description="" />
+
+}
+@model IEnumerable<ProductCategoryModel>
+<vc:vc-banner-home></vc:vc-banner-home>
+
+<vc:vc-banner></vc:vc-banner>
+<!-- Our Products Start -->
+
+<section class="featured-product ptb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="heading-part align-center mb-30">
+                    <h2 class="main_title heading">Sản phẩm của chúng tôi</h2>
+                    <div class="category-bar" id="tabs">
+                        <ul class="tab-stap">
+                            <li><a title="step1" class="tab-step1 selected">Mới nhất</a></li>
+                            <li><a title="step2" class="tab-step2">Khuyến mãi</a></li>
+                            <li><a title="step3" class="tab-step3">Nổi bật</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pro_cat tab_content product-listing grid-type">
+            <div id="items">
+                <ul>
+                    <li>
+                        <div id="data-step1" class="items-step1 product-slider-main position-r selected" data-temp="tabdata">
+                            <vc:vc-product-new></vc:vc-product-new>
+
+
+                        </div>
+                    </li>
+                    <li>
+                        <div id="data-step2" class="items-step2 product-slider-main position-r" data-temp="tabdata">
+
+                            <vc:vc-product-sale></vc:vc-product-sale>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="data-step3" class="items-step3 product-slider-main position-r" data-temp="tabdata">
+                            <vc:vc-product-featured></vc:vc-product-featured>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Our Products end -->
+
+
+<vc:vc-center-banner-home></vc:vc-center-banner-home>
+<!-- Best seller start -->
+<vc:vc-product-best-seller></vc:vc-product-best-seller>
+
+<!-- Best seller end -->
+<!-- Services Features Block Start -->
+<section>
+    <div class="container">
+        <div class="ser-feature-block">
+            <div class="row mlr_-20">
+                <div class="col-md-4 col-xs-6 plr-20 center-sm">
+                    <div class="feature-box-main">
+                        <div class="feature-box feature1">
+                            <div class="ser-title">Miễn phí giao hàng <br>& Đổi trả</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-6 plr-20 center-sm">
+                    <div class="feature-box-main">
+                        <div class="feature-box feature2">
+                            <div class="ser-title">Hoàn tiền <br>100%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-6 plr-20 center-sm">
+                    <div class="feature-box-main">
+                        <div class="feature-box feature3">
+                            <div class="ser-title"> Hỗ trợ khác hàng<br> 24/7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Features Block End -->
+<!-- Blog section start -->
+<vc:vc-article-new></vc:vc-article-new>
+<!-- Blog section end -->
+<!-- Brand logo block Start  -->
+<vc:vc-brand></vc:vc-brand>
+<!-- Brand logo block End  -->
+
+@section Scripts {
+    <script type="text/javascript">
+    </script>
+}

@@ -1,0 +1,316 @@
+﻿@model CustomerModel
+@{
+    ViewData["Title"] = "Tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var account = ViewBag.Account as AccountModel;
+    var gender = Model.Gender.HasValue? Convert.ToString(Model.Gender).ToLower(): "";
+
+}
+
+
+<!-- Bread Crumb STRAT -->
+<div class="banner inner-banner1">
+    <div class="container">
+        <section class="banner-detail center-xs">
+            <h1 class="banner-title right-side float-none-xs">Tài khoản</h1>
+            <div class="bread-crumb">
+                <ul>
+                    <li><a href="/"><i class="fa fa-home"></i>Trang chủ</a>/</li>
+                    <li><span>Tài khoản</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Bread Crumb END -->
+<!-- CONTAIN START -->
+<section class="checkout-section ptb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="account-sidebar account-tab mb-sm-30">
+                    <div class="dark-bg tab-title-bg">
+                        <div class="heading-part">
+                            <div class="sub-title"><span></span> Tài khoản của tôi</div>
+                        </div>
+                    </div>
+                    <div class="account-tab-inner">
+                        <ul class="account-tab-stap">
+                            <li id="step1" class="active"> <a href="javascript:void(0)">Tổng quan<i class="fa fa-angle-right"></i> </a> </li>
+                            <li id="step2"> <a href="javascript:void(0)">Chi tiết tài khoản<i class="fa fa-angle-right"></i> </a> </li>
+                           @* <li id="step3"> <a href="javascript:void(0)">Đơn hàng của tôi<i class="fa fa-angle-right"></i> </a> </li>*@
+                            <li id="step4"> <a href="javascript:void(0)">Đổi mật khẩu<i class="fa fa-angle-right"></i> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div id="data-step1" class="account-content" data-temp="tabdata">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="heading-part heading-bg mb-30">
+                                <h2 class="heading m-0">Tổng quan tài khoản</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-30">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="heading-part">
+                                    <h3 class="sub-heading">Xin chào, @account.UserName</h3>
+                                </div>
+                                <p>
+                                    Cập nhật thông tin chi tiết để nhận được nhiều ưu đãi đặc biệt hơn.
+                                    @*@if (account.IsVerified == false)
+                                    {
+                                        <span>Vui lòng xác nhận thông tin <a class="account-link" id="subscribelink" href="#">tại đây</a></span>
+
+                                    }*@
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-0">
+                        <div class="row">
+                            <div class="col-12 mb-20">
+                                <div class="heading-part">
+                                    <h3 class="sub-heading">Thông tin tài khoản</h3>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="cart-total-table address-box commun-table">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Địa chỉ nhận hàng </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <ul>
+                                                            <li class="inner-heading"> <b>@Model.FullName</b> </li>
+                                                            <li>
+                                                                <p>@Model.Address</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>@Model.Tel</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>@Model.Phone</p>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="data-step2" class="account-content" data-temp="tabdata" style="display:none">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="heading-part heading-bg mb-30">
+                                <h2 class="heading m-0">Chi tiết tài khoản</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-0">
+                        <div class="main-form full">
+                            <div class="mb-20">
+                                <div class="row">
+                                    <div class="col-12 mb-20">
+                                        <div class="heading-part">
+                                            <h3 class="sub-heading">Địa chỉ nhận hàng</h3>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-box">
+                                            <input type="text" value="@Model.FullName" id="fullName" placeholder="Họ và tên">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-box">
+                                            <input type="email" value="@Model.Email"  id="email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-box">
+                                            <input type="text" value="@Model.Phone"  id="phone" placeholder="Số điện thoại">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-box">
+                                            <input type="date"  value="@Model.Birthday" id="birthday" placeholder="Ngày sinh">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-box">
+                                            <select class="form-control"  id="gender">
+                                                <option value="">Chọn giới tính</option>
+                                                <option value="true">Nam</option>
+                                                <option value="false">Nữ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="input-box">
+                                            <textarea  value="@Model.Address"  placeholder="Nhập địa chỉ" id="address" rows="3"></textarea>
+                                            <span>Vui lòng ghi thêm thông tin số nhà và tên đường. Bởi vì dịch cụ giao hàng sẽ tìm thấy địa chỉ nhà bạn dễ dàng hơn! </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn-color" id="updateInfo">Lưu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div id="data-step4" class="account-content" data-temp="tabdata" style="display:none">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="heading-part heading-bg mb-30">
+                                <h2 class="heading m-0">Đổi mật khẩu</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-form full">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="input-box">
+                                    <label for="old-pass">Mật khẩu cũ</label>
+                                    <input id="old-pass"type="password" placeholder="Nhập mật khẩu cũ">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-box">
+                                    <label for="new-pass">Mật khẩu mới</label>
+                                    <input id="new-pass" type="password" placeholder="Nhập mật khẩu mới">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn-color" id="changePass" >Đổi mật khẩu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTAINER END -->
+
+
+@section Scripts {
+    <script>
+
+
+
+        $(document).ready(function () {
+
+            const product = {
+                init: function () {
+                    product.registerEvent();
+                },
+                changePassword: function () {
+
+                    const mObj = {
+                        oldPassword: $('#old-pass').val(),
+                        newPassword: $('#new-pass').val(),
+                        id: 0,
+                    }
+                    $.ajax({
+                        url: `/account/updatepassword`,
+                        data: JSON.stringify(mObj),
+                        type: "POST",
+                        contentType: "application/json;charset=utf-8",
+                        success: function (res) {
+                            if (res.status) {
+                                alert("Đổi mật khẩu thành công!");
+                                $('#old-pass').val("");
+                                $('#new-pass').val("");
+                            } else {
+                                alert("Đã có lỗi xảy ra vui lòng thử lại!");
+                            }
+                        },
+                        error: function (errormessage) {
+                            alert("Đã có lỗi xảy ra vui lòng thử lại!");
+                        }
+                    });
+                },
+                updateInfo: function () {
+
+                    const mObj = {
+                        fullName: $('#fullName').val(),
+                        phone: $('#phone').val(),
+                        email: $('#email').val(),
+                        address: $('#address').val(),
+                        gender: $('#gender').val() == '' ? null : JSON.parse($('#gender').val()) ,
+                        birthday: $('#birthday').val(),
+                        id: 0,
+                    }
+                    $.ajax({
+                        url: `/account/updateinfo`,
+                        data: JSON.stringify(mObj),
+                        type: "POST",
+                        contentType: "application/json;charset=utf-8",
+                        success: function (res) {
+                            if (res.status) {
+                                alert("Cập nhật thành công!");
+                                $('#old-pass').val("");
+                                $('#new-pass').val("");
+                            } else {
+                                alert("Cập nhật không thành công!");
+                            }
+                        },
+                        error: function (errormessage) {
+                            alert("Cập nhật không thành công!");
+                        }
+                    });
+                },
+                registerEvent: function () {
+                    const gender = @Html.Raw(Json.Serialize(gender));
+
+                    $('#gender').val(gender);
+                    $('#updateInfo').off('click').on('click', function () {
+                        if ($('#fullName').val() == "") {
+                            alert("Vui lòng nhập họ và tên");
+                            return;
+                        } else if ($('#email').val() == "") {
+                            alert("Vui lòng nhập email");
+                            return;
+                        } else if ($('#gender').val() == "") {
+                            alert("Vui lòng nhập email");
+                            return;
+                        } else if ($('#address').val() == "") {
+                            alert("Vui lòng nhập địa chi");
+                            return;
+                        }
+                        else if ($('#phone').val() == "") {
+                            alert("Vui lòng nhập số điện thoại");
+                            return;
+                        }
+                        else if ($('#birthDay').val() == "") {
+                            alert("Vui lòng nhập ngày sinh");
+                            return;
+                        }
+                        else
+                        product.updateInfo();
+                    })
+                },
+            };
+            product.init();
+
+        });
+    </script>
+}

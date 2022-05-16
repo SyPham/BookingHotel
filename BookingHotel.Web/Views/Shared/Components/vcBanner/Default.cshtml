@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BannerModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+    var smallBanner = ViewBag.SmallBanner as IEnumerable<BannerModel>;
+}
+@if (Model != null)
+{
+
+    <section class="sub-banner-block">
+        <div class="container">
+            <div class="center-sm">
+                <div class="row mlr_-20">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6 plr-20">
+                            <div class="sub-banner sub-banner4">
+                                <img src="@item.Avatar.ToBigSubBannerImage(url)" alt="@item.Title.UrlEncode()">
+                                <div class="sub-banner-detail">
+                                    <div class="sub-banner-title sub-banner-title-color">@item.Title </div>
+                                    <div class="sub-banner-subtitle">@item.SubTitle</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="col-lg-4 col-ms-12 plr-20">
+                        <!-- d-none d-xl-block -->
+
+                        <div class="row mlr_-20">
+                            @foreach (var item in smallBanner)
+                            {
+                                <div class="col-lg-12 col-md-6 col-sm-6 plr-20">
+                                    <div class="sub-banner sub-banner">
+                                        <img src="@item.Avatar.ToSmallSubBannerImage(url)" alt="@item.Title.UrlEncode()">
+                                        <div class="sub-banner-detail">
+                                            <div class="sub-banner-title sub-banner-title-color">@item.Title </div>
+                                            <div class="sub-banner-subtitle">@item.SubTitle</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

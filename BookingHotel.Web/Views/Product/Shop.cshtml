@@ -1,0 +1,183 @@
+﻿@model List<HierarchyNode<MainMenuModel>>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var partner = ViewBag.Partner as IEnumerable<PartnerModel>;
+    var productCategory = ViewBag.ProductCategory as IEnumerable<ProductCategoryModel>;
+    var productCat = ViewBag.ProductCat as ProductCategoryModel;
+    var page = Convert.ToInt32(ViewBag.Page);
+    var pageSize = Convert.ToInt32(ViewBag.PageSize);
+    var sortBy = Convert.ToInt32(ViewBag.SortBy);
+    var catId = Convert.ToInt32(ViewBag.CatId);
+    string url = Convert.ToString(ViewBag.Url);
+    if (productCat == null)
+        ViewData["Title"] = "Cửa hàng";
+    else
+        ViewData["Title"] = productCat.MetaTitle;
+}
+@section metatags {
+    <vc:vc-metatag key-word="@productCat?.MetaKeywords" description="@productCat?.MetaDescription" />
+}
+
+<!-- Bread Crumb STRAT -->
+<div class="banner inner-banner1">
+    <div class="container">
+        <section class="banner-detail center-xs">
+            <h1 class="banner-title right-side float-none-xs">Cửa hàng</h1>
+            <div class="bread-crumb">
+                <ul>
+                    <li><a href="/"><i class="fa fa-home"></i>Trang chủ</a>/</li>
+                    <li><span>Danh mục</span>/</li>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <li><span>@item.Entity.Title</span>@(item.HasChildren ? "": "")</li>
+
+                        @*@foreach (var sub in item.ChildNodes.Select((value, i) => new { i, value}))
+                        {
+                            <li><span>@sub.value.Entity.Title</span>@(sub.i ==0 && item.ChildNodes.Count() > 1 ? "/": "")</li>
+
+                            @foreach (var sub2 in sub.value.ChildNodes.Select((value, i) => new { i, value }))
+                            {
+                                <li><span>@sub2.value.Entity.Title</span>@(sub2.i == 0 && sub.value.ChildNodes.Count() > 1 ? "/": "")</li>
+
+                            }
+
+                        }*@
+
+                    }
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Bread Crumb END -->
+<!-- CONTAIN START -->
+<section class="ptb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="shorting shorting-style-2 mb-20">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="view">
+                                <div class="list-types grid active">
+                                    <a>
+                                        <div class="grid-icon list-types-icon"></div>
+                                    </a>
+                                </div>
+                                <div class="list-types list">
+                                    <a>
+                                        <div class="list-icon list-types-icon"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="short-by">
+                                <span>Sắp xếp :</span>
+                                <div class="select-item select-dropdown">
+                                    <select id="sort-price" class="option-drop">
+                                        <option value="0" selected="selected">Tên (A to Z)</option>
+                                        <option value="1">Tên(Z - A)</option>
+                                        <option value="2">Giá(Thấp&gt;Cao)</option>
+                                        <option value="3">Giá(Cap &gt; Thấp)</option>
+                                        <option value="4">Đánh giá(Cao nhất)</option>
+                                        <option value="5">Đánh giá(Thấp nhất)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="show-item float-left-sm">
+                                <span>Hiển thị :</span>
+                                <div class="select-item select-dropdown">
+                                    <fieldset>
+                                        <select id="show-item" class="option-drop">
+                                            <option value="24" selected="selected">24</option>
+                                            <option value="12">12</option>
+                                            <option value="6">6</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <span>Mỗi trang</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="filterResult">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTAINER END -->
+
+@section Scripts {
+    <script>
+
+
+
+        $(document).ready(function () {
+
+            const product = {
+                init: function () {
+                    product.registerEvent();
+                    let pageTemp = @Html.Raw(Json.Serialize(page));
+                    let pageSizeTemp = @Html.Raw(Json.Serialize(pageSize));
+                    let sortByTemp = @Html.Raw(Json.Serialize(sortBy));
+                    let catIdTemp = @Html.Raw(Json.Serialize(catId));
+                    console.log(pageTemp, pageSizeTemp, sortByTemp)
+
+                    $('#sort-price').val(sortByTemp);
+                    $("#sort-price").selectmenu("refresh");
+
+                    $('#show-item').val(pageSizeTemp);
+                    $("#show-item").selectmenu("refresh");
+
+                    let sort = +$("#sort-price").val();
+                    let pageSize = +$("#show-item").val();
+                    product.loadData(catIdTemp, pageTemp, pageSize, sort);
+                },
+                loadData: function (catId,page, pageSize, sortBy) {
+                    $.ajax({
+                        url: `/product/filterresult?catId=${catId}&page=${page}&pageSize=${pageSize}&sortBy=${sortBy}`,
+                        type: "GET",
+                        success: function (html) {
+                            $('#filterResult').html(html);
+                            sticky_sidebar_adjust();
+                            product.registerEvent();
+                        },
+                        error: function (errormessage) {
+                            console.log(errormessage);
+                        }
+                    });
+                },
+                registerEvent: function () {
+                    let pageTemp = @Html.Raw(Json.Serialize(page));
+                    let catIdTemp = @Html.Raw(Json.Serialize(catId));
+
+                    $("#sort-price").selectmenu({
+                        change: function (event, data) {
+                            let pageSize = +$("#show-item").val();
+                            let sort = +data.item.value;
+                            product.loadData(catIdTemp, pageTemp, pageSize, sort);
+
+                        }
+                    });
+                    $("#show-item").selectmenu({
+                        change: function (event, data) {
+                            let sort = +$("#sort-price").val();
+                            let pageSize = +data.item.value;
+                            product.loadData(catIdTemp, pageTemp, pageSize, sort);
+                        }
+                    });
+                },
+            };
+            product.init();
+
+        });
+    </script>
+}

@@ -1,0 +1,168 @@
+﻿@model X.PagedList.IPagedList<ArticleModel>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string url = Convert.ToString(ViewBag.Url);
+    var catModel = ViewBag.ArticleCategory as ArticleCategoryModel;
+    if (catModel == null)
+        ViewData["Title"] = "Tin tức";
+    else
+        ViewData["Title"] = catModel.MetaTitle;
+}
+@section metatags {
+    <vc:vc-metatag key-word="" description="" />
+}
+
+<!-- Bread Crumb STRAT -->
+<div class="banner inner-banner1">
+    <div class="container">
+        <section class="banner-detail center-xs">
+            @if (catModel != null)
+            {
+                <h1 class="banner-title right-side float-none-xs">@catModel.Title</h1>
+
+            }
+            else
+            {
+                <h1 class="banner-title right-side float-none-xs">Tin tức</h1>
+            }
+            <div class="bread-crumb">
+                <ul>
+                    <li><a href="/"><i class="fa fa-home"></i>Trang chủ</a>/</li>
+                    @if (catModel != null)
+                    {
+                        <li><span>Tin tức</span>/</li>
+                        <li><span>@catModel.Title</span></li>
+                    }
+                    else
+                    {
+                        <li><span>Tin tức</span></li>
+                    }
+
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Bread Crumb END -->
+<!-- CONTAIN START -->
+<section class="ptb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <div class="blog-listing">
+                    <div class="row mlr_-20">
+                        @if (Model.Count > 0)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-xl-6 col-lg-6 col-12 plr-20">
+                                    <div class="blog-item">
+                                        <div class="blog-media mb-20">
+                                            <img src="@item.Thumb.ToBlogImage(url)" alt="@item.Title">
+                                            <div class="blog-effect"></div>
+                                            <a asp-route-id="@item.Id"
+                                               asp-route-catid="@item.ArticleCategoryId"
+                                               asp-route-title="@item.Title.UrlEncode()"
+                                               asp-route="article-detail" class="read">
+                                                &nbsp;
+                                            </a>
+                                            @if (item.CreateTime.HasValue)
+                                            {
+                                                <div class="date">
+                                                    @item.CreateTime.Value.ToString("dd") <br>
+                                                    <span>@item.CreateTime.Value.ToString("MMM")</span>
+                                                </div>
+                                            }
+
+                                        </div>
+                                        <div class="blog-detail">
+                                            <h4 class="blog-title">
+                                                <a asp-route-id="@item.Id"
+                                                   asp-route-catid="@item.ArticleCategoryId"
+                                                   asp-route-title="@item.Title.UrlEncode()"
+                                                   asp-route="article-detail">
+                                                    @item.Title
+                                                </a>
+
+                                            </h4>
+                                            <div class="post-info">
+                                                @*<ul>
+                                                    <li><span>By</span><a href="#"> cormon jons</a></li>
+                                                    <li><a href="#">(5) comments</a></li>
+                                                </ul>*@
+                                            </div>
+                                            <p>
+                                                @item.Description
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            @if (Model.PageCount > 1)
+                            {
+                                @if (ViewBag.ArticleCategory != null)
+                                {
+                                        <div class="pagination-bar">
+                                            @Html.PagedListPager(Model
+                                           , page => Url.Action("Index"
+                                           , new { page = page, catID = catModel.Id, title = catModel.Title.UrlEncode() }),
+                                           new PagedListRenderOptions
+                                           {
+                                               LinkToFirstPageFormat = "<<",
+                                               LinkToPreviousPageFormat = "<",
+                                               LinkToNextPageFormat = ">",
+                                               LinkToLastPageFormat = ">>",
+                                               DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                                               MaximumPageNumbersToDisplay = 8,
+                                               DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                                               DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                                               DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                                               DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                               LiElementClasses = new string[] { "page-item" },
+                                               PageClasses = new string[] { "page-link" }
+                                           });
+                                        </div>
+
+                                }
+                                else
+                                {
+                                       
+                                            @Html.PagedListPager(Model
+                                           , page => Url.Action("Index"
+                                           , new { page = page }),
+                                           new PagedListRenderOptions
+                                           {
+                                               LinkToFirstPageFormat = "<<",
+                                               LinkToPreviousPageFormat = "<",
+                                               LinkToNextPageFormat = ">",
+                                               LinkToLastPageFormat = ">>",
+                                               DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                                               MaximumPageNumbersToDisplay = 8,
+                                               DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                                               DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                                               DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                                               DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                               LiElementClasses = new string[] { "page-item" },
+                                               PageClasses = new string[] { "page-link" }
+                                           });
+                                       
+
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <vc:vc-article-category-right></vc:vc-article-category-right>
+        </div>
+    </div>
+</section>
+<!-- CONTAINER END --> 

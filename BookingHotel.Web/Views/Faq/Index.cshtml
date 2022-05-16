@@ -1,0 +1,305 @@
+﻿@model List<FaqModel>
+@{
+    ViewData["Title"] = "Câu hỏi thường gặp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section metatags {
+    <vc:vc-metatag key-word="" description="" />
+}
+<vc:vc-banner />
+
+<div class="section-padding">
+    <div class="container py-lg-4 mx-auto col-md-9">
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <div class="page-title-h5 d-flex align-items-center">
+                    <h5 class="my-0 text-gray-900">CÂU HỎI THƯỜNG GẶP</h5>
+                </div>
+            </div>
+            <nav class="col-xl-12" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Câu hỏi thường gặp
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box border rounded bg-white mb-4">
+                    <div class="p-4 d-flex align-items-center">
+                        <i class="icofont-unique-idea display-4"></i>
+                        <div class="ml-4">
+                            <h5 class="text-gray-900 mb-3 mt-0">Giải đáp những câu hỏi thường gặp</h5>
+                            <p class="mb-0 text-muted">
+                                Liệt kê, giải đáp những câu hỏi thường gặp mà khách hàng vướng phải ...!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box border rounded bg-white mb-4">
+                    <div class="p-4 d-flex align-items-center">
+                        <i class="icofont-safety display-4"></i>
+                        <div class="ml-4">
+                            <h5 class="text-gray-900 mb-3 mt-0">
+                                Trung tâm an toàn
+                            </h5>
+                            <p class="mb-0 text-muted">
+                                Bạn muốn tìm hiểu thêm về cách thiết lập và quản lý tài khoản của mình?
+                                Không cần tìm đâu xa!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="basics">
+                    <div class="mb-3 mt-4">
+                    </div>
+                    <div id="basicsAccordion">
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingOne">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn p-3 collapsed" data-toggle="collapse" data-target="#basicsCollapseOne" aria-expanded="false" aria-controls="basicsCollapseOne">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseOne" class="collapse show" aria-labelledby="basicsHeadingOne" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingTwo">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn collapsed p-3" data-toggle="collapse" data-target="#basicsCollapseTwo" aria-expanded="false" aria-controls="basicsCollapseTwo">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseTwo" class="collapse" aria-labelledby="basicsHeadingTwo" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingThree">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn collapsed p-3" data-toggle="collapse" data-target="#basicsCollapseThree" aria-expanded="false" aria-controls="basicsCollapseThree">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseThree" class="collapse" aria-labelledby="basicsHeadingThree" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingFour">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn collapsed p-3" data-toggle="collapse" data-target="#basicsCollapseFour" aria-expanded="false" aria-controls="basicsCollapseFour">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseFour" class="collapse" aria-labelledby="basicsHeadingFour" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="basics">
+                    <div class="mb-3 mt-4">
+                        <h4 class="text-gray-900">Tài khoản cá nhân</h4>
+                    </div>
+                    <div id="basicsAccordion">
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingOne">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn p-3 collapsed" data-toggle="collapse" data-target="#basicsCollapseOne" aria-expanded="false" aria-controls="basicsCollapseOne">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseOne" class="collapse show" aria-labelledby="basicsHeadingOne" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingTwo">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn collapsed p-3" data-toggle="collapse" data-target="#basicsCollapseTwo" aria-expanded="false" aria-controls="basicsCollapseTwo">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseTwo" class="collapse" aria-labelledby="basicsHeadingTwo" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingThree">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn collapsed p-3" data-toggle="collapse" data-target="#basicsCollapseThree" aria-expanded="false" aria-controls="basicsCollapseThree">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseThree" class="collapse" aria-labelledby="basicsHeadingThree" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingFour">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn collapsed p-3" data-toggle="collapse" data-target="#basicsCollapseFour" aria-expanded="false" aria-controls="basicsCollapseFour">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseFour" class="collapse" aria-labelledby="basicsHeadingFour" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="basics">
+                    <div class="mb-3 mt-4">
+                        <h4 class="text-gray-900">Tài khoản đối tác</h4>
+                    </div>
+                    <div id="basicsAccordion">
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingOne">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn p-3 collapsed" data-toggle="collapse" data-target="#basicsCollapseOne" aria-expanded="false" aria-controls="basicsCollapseOne">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseOne" class="collapse show" aria-labelledby="basicsHeadingOne" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingTwo">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn collapsed p-3" data-toggle="collapse" data-target="#basicsCollapseTwo" aria-expanded="false" aria-controls="basicsCollapseTwo">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseTwo" class="collapse" aria-labelledby="basicsHeadingTwo" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingThree">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn collapsed p-3" data-toggle="collapse" data-target="#basicsCollapseThree" aria-expanded="false" aria-controls="basicsCollapseThree">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseThree" class="collapse" aria-labelledby="basicsHeadingThree" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="box border rounded bg-white mb-2">
+                            <div id="basicsHeadingFour">
+                                <h5 class="mb-0">
+                                    <button class="shadow-none btn btn-block d-flex justify-content-between card-btn collapsed p-3" data-toggle="collapse" data-target="#basicsCollapseFour" aria-expanded="false" aria-controls="basicsCollapseFour">
+                                        Quyền lợi khi đăng ký tài khoản thành viên ?
+                                        <span class="card-btn-arrow">
+                                            <span class="icofont-rounded-down"></span>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseFour" class="collapse" aria-labelledby="basicsHeadingFour" data-parent="#basicsAccordion">
+                                <div class="card-body border-top p-3 text-muted">
+                                    Khi bạn đăng ký tài khoản thành viên, bạn sẽ được tặng 500 điểm để mua các mã giảm giá, khi giới thiệu mỗi thành viên thì sẽ được cộng 300 điểm. Khi bạn đăng ký tài khoản thì bạn mới được thực hiện giao dịch
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

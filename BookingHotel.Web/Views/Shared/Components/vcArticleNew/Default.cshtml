@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ArticleModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+
+<section class="pt-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="heading-part align-center">
+                    <h2 class="main_title heading">Bài viết mới</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row mlr_-20">
+            <div id="blog" class="owl-carousel">
+                @foreach (var item in Model)
+                {
+                    <div class="item">
+                        <div class="blog-item">
+                            <div class="blog-media mb-20">
+                                <img src="@item.Thumb.ToBlogImage(url)" alt="@item.Title">
+                                <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
+                                <div class="date">
+                                    01 <br>
+                                    <span>Jan</span>
+                                </div>
+                            </div>
+                            <div class="blog-detail">
+                                <h3 class="blog-title">
+                                    <a asp-route-id="@item.Id"
+                                       asp-route-catid="@item.ArticleCategoryId"
+                                       asp-route-title="@item.Title.UrlEncode()"
+                                       asp-route="article-detail">
+                                        @item.Title
+                                    </a>
+                                </h3>
+                                @*<div class="post-info">
+            <ul>
+                <li><span>By</span><a href="#"> cormon jons</a></li>
+                <li><a href="#">(5) comments</a></li>
+            </ul>
+        </div>*@
+                                <p>@item.Description</p>
+                                <a asp-route-id="@item.Id"
+                                   asp-route-catid="@item.ArticleCategoryId"
+                                   asp-route-title="@item.Title.UrlEncode()"
+                                   asp-route="article-detail">
+                                    Xem thêm
+                                    <i class="fa fa-angle-double-right"></i>
+                                </a>
+                              
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</section>

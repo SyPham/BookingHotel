@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AssessWebModel>
+
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+@if (Model != null)
+{
+    <h4>Đánh giá<span>(@Model.Count())</span></h4>
+    <ul class="comment-list mt-30">
+        @foreach (var item in Model)
+        {
+            var name = "Lee Crossley";
+            var nameSplit = name.Split(" ");
+            var firt = nameSplit.Length > 0 ? nameSplit[0].ToCharArray()[0].ToString().ToUpper() : "N/";
+            var second = nameSplit.Length > 1 ? nameSplit[1].ToCharArray()[0].ToString().ToUpper() : "A";
+            var result = firt + second;
+            <li>
+                <div class="comment-user user-icon" data-id="@item.Id" data-name="@item.FullName">
+                    <canvas id="user-icon-@(item.Id)" style="border-radius: 50%" width="50" height="50"></canvas>
+                </div>
+                <div class="comment-detail">
+                    <div class="user-name">
+                        <div>
+                            @item.FullName
+                        </div>
+                        <div class="rating-summary-block">
+                            @if (item.NumberStar.HasValue)
+                            {
+                                var rating = Math.Round((item.NumberStar.Value / 5) * 100);
+                                <div title="@rating%" class="rating-result">
+                                    <span style="width:@rating%"></span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div title="0%" class="rating-result">
+                                    <span style="width:0%"></span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <ul>
+                            <li>@item.CreateTime?.ToString("dd/MM/yyyy")</li>
+                        </ul>
+                    </div>
+                    <p>@item.Content</p>
+                </div>
+            </li>
+
+        }
+    </ul>
+}

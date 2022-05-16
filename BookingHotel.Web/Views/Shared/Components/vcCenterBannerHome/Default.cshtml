@@ -1,0 +1,24 @@
+﻿@model BannerModel
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+@if (Model != null)
+{
+    <section>
+        <div class="perellex-banner" style="        background: url( @Model.Thumb.ToCenterBannerImage(url) ) no-repeat fixed center !important">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-5 col-12"></div>
+                    <div class="col-lg-5 col-md-7 col-12">
+                        <div class="perellex-delail ptb-95 align-center">
+                            <div class="perellex-subtitle mtb-20s">@Model.Title</div>
+                            <div class="perellex-title">@Model.SubTitle</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+

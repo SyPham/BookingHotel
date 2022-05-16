@@ -1,0 +1,115 @@
+﻿@model ProductModel
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+<div class="popup-detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 mb-xs-30">
+
+                        <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
+                            @foreach (var item in Model.ImageListProduct.Split(";"))
+                            {
+                                <a asp-route-id="@Model.Id"
+                                   asp-route-catid="@Model.ProductCategoryId"
+                                   asp-route-title="@Model.Title.UrlEncode()"
+                                   asp-route="product-detail">
+                                    <img src="@item.ToImage(url)">
+                                </a>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="product-detail-main">
+                                    <div class="product-item-details">
+                                        <h1 class="product-item-name">@Model.Title</h1>
+
+                                        <div class="rating-summary-block">
+                                            @if (Model.ValueAssess.HasValue)
+                                            {
+                                                var rating = Math.Round((Model.ValueAssess.Value / 5) * 100);
+                                                <div title="@rating%" class="rating-result">
+                                                    <span style="width:@rating%"></span>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div title="0%" class="rating-result">
+                                                    <span style="width:0%"></span>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="price">@Model.Price.ToCurrency()</span>
+                                            @if (Model.OldPrice.HasValue && Model.OldPrice > 0)
+                                            {
+
+                                                <del class="price old-price">@Model.OldPrice.ToCurrency()</del>
+                                            }
+                                        </div>
+                                        <div class="product-info-stock-sku">
+                                            @if (Model.StockStatus.HasValue && Model.StockStatus.Value)
+                                            {
+                                                <div>
+                                                    <label>Tình trạng: </label>
+                                                    <span class="info-deta">Còn hàng</span>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div>
+                                                    <label>Tình trạng: </label>
+                                                    <span class="info-deta">Hết hàng</span>
+                                                </div>
+                                            }
+
+                                            <div>
+                                                <label>MSP: </label>
+                                                <span class="info-deta">@Model.Code</span>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-20">
+                                        <p>
+                                            @Model.Description
+                                        </p>
+                                        <hr class="mb-20">
+                                        <div class="mb-20">
+                                            <div class="bottom-detail cart-button responsive-btn">
+                                                <ul>
+                                                    <li class="pro-cart-icon">
+                                                        <a asp-route="addcart" title="Chọn ngay"
+                                                           asp-route-productid="@Model.Id" class="btn btn-color"><span></span> Chọn mua</a>
+                                                    </li>
+                                                    <li class="pro-wishlist-icon">
+                                                        @if (Model.IsWishlist)
+                                                        {
+
+                                                            <a title="Bỏ yêu thích" onclick="DeleteWishlist(@Model.Id)">
+                                                                <span></span> Bỏ yêu thích
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a title="yêu thích" onclick="Wishlist(@Model.Id)">
+                                                                <span></span> Yêu thích
+                                                            </a>
+                                                        }
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

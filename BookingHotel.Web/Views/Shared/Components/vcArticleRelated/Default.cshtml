@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ArticleModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+
+<div class="sidebar-box sidebar-item sidebar-item-wide mb-30">
+    <span class="opener plus"></span>
+    <div class="sidebar-title">
+        <h3><i class="fa fa-list-ul"></i> Bài viết liên quan</h3>
+    </div>
+    <div class="sidebar-contant">
+        @if (Model != null)
+        {
+            <ul>
+
+                @foreach (var item in Model)
+                {
+
+                    <li>
+                        <div class="pro-media">
+
+                            <a asp-route-id="@item.Id"
+                               asp-route-catid="@item.ArticleCategoryId"
+                               asp-route-title="@item.Title.UrlEncode()"
+                               asp-route="service-detail">
+                                <img src="@item.Thumb.ToBlogImage(url)">
+                            </a>
+                        </div>
+                        <div class="pro-detail-info">
+                            <a asp-route-id="@item.Id" style="float: left; width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; height: 17px;"
+                               asp-route-catid="@item.ArticleCategoryId"
+                               asp-route-title="@item.Title.UrlEncode()"
+                               asp-route="service-detail">
+                                @item.Title
+                            </a>
+                            <div class="post-info">@item.CreateTime.Value.ToString("dd-MM-yyyy")</div>
+                        </div>
+                    </li>
+                }
+
+            </ul>
+        }
+
+    </div>
+</div>

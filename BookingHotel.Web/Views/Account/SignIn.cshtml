@@ -1,0 +1,77 @@
+﻿@{
+    string returnUrl = Model != null ? Model.ReturnUrl : string.Empty;
+
+    ViewData["Title"] = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model LoginViewModel
+    <!-- Bread Crumb STRAT -->
+<div class="banner inner-banner1">
+    <div class="container">
+        <section class="banner-detail center-xs">
+            <h1 class="banner-title right-side float-none-xs">Đăng nhập</h1>
+            <div class="bread-crumb">
+                <ul>
+                    <li><a href="/"><i class="fa fa-home"></i>Trang chủ</a>/</li>
+                    <li><span>Đăng nhập</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Bread Crumb END -->
+<!-- CONTAIN START -->
+<section class="checkout-section ptb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-8 col-md-8 ">
+                        <form class="main-form full" asp-route="account-sign-in" asp-route-returnUrl="@returnUrl">
+                            <div class="row">
+                                <div class="col-12 mb-20">
+                                    <div class="heading-part heading-bg">
+                                        <h2 class="heading">Đăng nhập</h2>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <message content="@ViewBag.Content" type="@ViewBag.Type" />
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-box">
+                                        <label for="login-email">Tài khoản/ Email/ Số điện thoại</label>
+                                        <input id="login-email" asp-for="Username" type="text" placeholder="Nhập Tài khoản/ Email/ Số điện thoại">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-box">
+                                        <label for="login-pass">Mật khẩu</label>
+                                        <input asp-for="Password" id="Password" type="password" required placeholder="Nhập mật khẩu">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="check-box left-side">
+                                        <span>
+                                            <input type="checkbox" asp-for="RememberMe" id="remember_me" class="checkbox">
+                                            <label for="remember_me">Remember Me</label>
+                                        </span>
+                                    </div>
+                                    <button name="submit" type="submit" class="btn-color right-side">Đăng nhập</button>
+                                  @*  <a href="/dang-nhap-facebook" class="btn-color right-side">Đăng nhập Facebook</a>*@
+                                </div>
+                                <div class="col-12">
+                                    <a title="Quên mật khẩu" class="forgot-password mtb-20" href="/quen-mat-khau">Quên mật khẩu?</a>
+                                    <hr>
+                                </div>
+                                <div class="col-12">
+                                    <div class="new-account align-center mt-20"> <span>Bạn mới tham gia Baby Monkey?</span> <a class="link" title="Đăng ký Baby Monkey" href="/dang-ky">Tạo mới tài khoản</a> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTAINER END -->

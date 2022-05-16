@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BannerModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+<section class="offer-dedicated-banner text-center">
+    <div class="owl-carousel p-0 owl-theme restaurant-slider">
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="item p-0 m-0">
+                    <img class="img-fluid" src="@item.Thumb.ToImageBanner(url)">
+                </div>
+            }}
+    </div>
+</section>

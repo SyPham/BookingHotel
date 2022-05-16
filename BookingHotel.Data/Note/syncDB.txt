@@ -1,0 +1,18 @@
+﻿Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Tools
+
+------------------ DB
+
+
+PM> Scaffold-DbContext 'Server=vietcoupon.vnsosoft.com\\MSSQLSERVER2017,1444;Database=vnsosoft_vietcoupon;user id=vnsosoft_vietcoupon;password=owI51a4_;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context VietCouponDBContext
+-------------------- Migration
+
+------------------ DB
+
+
+PM> Scaffold-DbContext 'Server=.\\MSSQLSERVER;Database=vnsosoft_vietcoupon;user id=sa;password=123456;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context VietCouponDBContext
+-------------------- Migration
+
+PM> Add-Migration Initial
+
+PM> update-database

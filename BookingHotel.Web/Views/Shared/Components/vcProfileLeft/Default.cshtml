@@ -1,0 +1,38 @@
+﻿
+@using  System.Security.Claims;
+@model CustomerModel;
+@{
+    string url = Convert.ToString(ViewBag.Url);
+    string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+}
+<div class="user-panel-body-left">
+    <div class="bg-white rounded p-4 mb-4 text-center shadow-sm">
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <img class="mb-3 mt-2 user-info-img" alt="Generic placeholder image" src="@Model.Avatar.ToImage(url)">
+            <h6 class="text-black mb-2 text-gray-900">@Model.FullName</h6>
+            <p class="m-0"><a href="@("mailto:" + Model.Email)" class="__cf_email__">@Model.Email</a></p>
+            <p class="mb-3">@Model.Phone</p>
+        }
+
+
+        <button type="button" class="btn btn-primary btn-block" onclick="location.href='/dang-xuat';">
+            <i class="icofont-logout"></i>
+            Đăng xuất
+        </button>
+        <p class="mb-0 mt-3">
+            <a href="/thong-tin-ca-nhan">
+                <i class="icofont icofont-edit-alt"></i>
+                Cập nhật thông tin cá nhân
+            </a>
+        </p>
+    </div>
+    <div class="user-panel-sidebar-link mb-4 bg-white rounded shadow-sm overflow-hidden">
+        <a href="/ma-giam-gia-cua-ban"><i class="icofont-ticket"></i> Mã giảm giá của bạn</a>
+        @*<a href="#"><i class="icofont-sale-discount"></i> Quản lý tích điểm</a>*@
+        <a href="/danh-sach-yeu-thich-cua-ban"><i class="icofont-heart"></i> Danh sách yêu thích</a>
+        @*<a href="#"><i class="icofont-star"></i> Đánh giá của bạn</a>*@
+        @*<a href="#"><i class="icofont-live-messenger"></i> Phản hồi về hệ thống</a>*@
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CartModel>
+@{
+    string url = Convert.ToString(ViewBag.Url);
+    Layout = null;
+}
+
+@if (Model != null && Model.Count() > 0)
+{
+    decimal total = 0;
+
+    <li class="cart-icon cart-box-main">
+        <a href="/gio-hang">
+            <span class="cart-icon-main">
+                @if (@ViewBag.Total > 0)
+                {
+                    <small class="cart-notification">@ViewBag.Total</small>
+                }
+            </span>
+        </a>
+        <div class="cart-dropdown header-link-dropdown">
+            <ul class="cart-list link-dropdown-list">
+                @foreach (var item in Model)
+                {
+                    var thanhtien = item.Quantity.Value * item.Product.Price.Value;
+                    total += thanhtien;
+                    <li>
+                        @*<a class="close-cart"><i class="fa fa-times-circle"></i></a>*@
+                        <div class="media">
+                            <a class="pull-left"> <img alt="@item.Product.Title.UrlEncode()" src="@item.Product.Avatar.ToImage(url)"></a>
+                            <div class="media-body">
+                                <span>
+                                    <a asp-route-id="@item.Product.Id"
+                                       asp-route-catid="@item.Product.ProductCategoryId"
+                                       asp-route-title="@item.Product.Title.UrlEncode()"
+                                       asp-route="product-detail">@item.Product.Title</a>
+                                </span>
+                                <p class="cart-price">@item.Product.Price?.ToString("n0")</p>
+                                <div class="product-qty">
+                                    <label>SL:</label>
+                                    <div class="custom-qty">
+                                        <input type="text" name="qty" maxlength="8" readonly value="@item.Quantity" title="Qty" class="input-text qty">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+
+
+            </ul>
+            <p class="cart-sub-totle"> <span class="pull-left">Tổng phụ</span> <span class="pull-right"><strong class="price-box">@total.ToCurrency()</strong></span> </p>
+            <div class="clearfix"></div>
+            <div class="mt-20">
+                <a href="/gio-hang" class="btn-color btn">Giỏ hàng</a> <a href="/dat-hang" class="btn-color btn right-side">Thanh toán</a>
+            </div>
+        </div>
+    </li>
+
+}
+else
+{
+<li class="cart-icon">
+    <a href="/gio-hang">
+        <span class="cart-icon-main">
+        </span>
+    </a>
+</li>
+}

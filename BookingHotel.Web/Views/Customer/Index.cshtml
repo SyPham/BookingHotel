@@ -1,0 +1,106 @@
+﻿@model CustomerModel
+@using  System.Security.Claims;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string url = Convert.ToString(ViewBag.Url);
+
+}
+
+<section class="user-panel-body py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-sm-4">
+                <vc:vc-profile-left />
+            </div>
+            <div class="col-xl-9 col-sm-8">
+
+
+                <div class="user-panel-body-right">
+                    <div id="mc" class="user-panel-tab-view mb-4">
+                        <div class="shadow-sm rounded overflow-hidden mb-3">
+                            <div class="p-4 bg-white">
+                                <h5 class="mb-0 text-gray-900">Mã giảm giá của tôi</h5>
+                            </div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all">Tất cả</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="notUsed-tab" data-toggle="tab" href="#notUsed">Chưa sử dụng</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="used-tab" data-toggle="tab" href="#used">Đã sử dụng</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div>
+                            <div class="tab-content" id="profileRight">
+                                <div class="tab-pane fade show active" id="all" data-toggle="tab">
+                                    <form asp-route="contact">
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="mb-1">Họ Tên <small class="text-danger">*</small></label>
+                                                    <div class="position-relative icon-form-control">
+                                                        <input placeholder="" asp-for="FullName" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="mb-1">Email <small class="text-danger">*</small></label>
+                                                    <div class="position-relative icon-form-control">
+                                                        <input placeholder="" asp-for="Email" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="mb-1">Tiêu đề <small class="text-danger">*</small></label>
+                                                    <div class="position-relative icon-form-control">
+                                                        <input placeholder="" asp-for="Tel" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="mb-1">Số điện thoại <small class="text-danger">*</small></label>
+                                                    <div class="position-relative icon-form-control">
+                                                        <input placeholder="" asp-for="Phone" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1">Nội dung cần hỗ trợ <small class="text-danger">*</small></label>
+                                            <div class="position-relative">
+                                                <textarea class="form-control pt-3" asp-for="NumberTakeCare" rows="4" name="Content" placeholder="..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <message content="@ViewBag.Content" type="@ViewBag.Type" />
+                                        </div>
+                                        <div class="d-flex align-items-center mt-4">
+                                            <button class="btn btn-primary text-uppercas" type="submit"> Xác nhận </button>
+                                            <label class="m-0 pl-4 text-black-50">
+                                                Chúng tôi sẽ liên hệ lại với bạn sau 1-2 ngày làm việc.
+                                            </label>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="notUsed" data-toggle="tab">.2..</div>
+                                <div class="tab-pane fade" id="used" data-toggle="tab">..3.</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,102 @@
+﻿@model MenuModel
+@{
+    string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+
+}
+<section class="middle-nav">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-while bg-white bg-none p-0">
+        <div class="container">
+            <a class="navbar-brand" asp-route="home">
+                <img class="img-fluid w-80" src="@Model.About.Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto custom-menu">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/trang-chu"><i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mã giảm giá
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach (var item in Model.ProductCategory)
+                            {
+                                <a class="dropdown-item" asp-route="product"
+                                   asp-route-page="1"
+                                   asp-route-catid="@item.Id"
+                                   asp-route-title="@item.Title.UrlEncode()">
+                                    @item.Title
+                                </a>
+                            }
+
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Về VietCoupons
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/gioi-thieu">Giới thiệu</a>
+                            <a class="dropdown-item" href="/lien-he">Liên hệ</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownService" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dịch vụ
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownService">
+                            @foreach (var item in Model.ServiceCategory)
+                            {
+                                <a class="dropdown-item" asp-route="service"
+                                   asp-route-page="1"
+                                   asp-route-catid="@item.Id"
+                                   asp-route-title="@item.Title.UrlEncode()">
+                                    @item.Title
+                                </a>
+                            }
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownArticle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Tin tức
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownArticle">
+                            @foreach (var item in Model.ArticleCategory)
+                            {
+                                <a class="dropdown-item" asp-route="article"
+                                   asp-route-page="1"
+                                   asp-route-catid="@item.Id"
+                                   asp-route-title="@item.Title.UrlEncode()">
+                                    @item.Title
+                                </a>
+                            }
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Thông tin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/terms.html">Điều khoản &Aacute; Điều Kiện</a>
+                            <a class="dropdown-item" href="/cau-hoi-thuong-gap">Câu hỏi thường gặp</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse mt-2">
+                <ul class="navbar-nav mx-auto custom-menu">
+                    <li>
+                        <button class="form-control-sm btn btn-sm btn-primary shadow-sm" onclick="location.href='/dang-ky-tai-khoan-ca-nhan';">ĐĂNG KÝ THÀNH VIÊN</button>
+                    </li>
+                    <li class="divider-custom d-none d-sm-block"></li>
+                    <li class="">
+                        <button class="form-control-sm btn btn-sm btn-primary shadow-sm" onclick="location.href='/dang-ky-tai-khoan-doi-tac';">ĐĂNG KÝ ĐỐI TÁC</button>
+                    <li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>

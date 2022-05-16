@@ -1,0 +1,141 @@
+﻿@model X.PagedList.IPagedList<ProductModel>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@{
+    string url = Convert.ToString(ViewBag.Url);
+}
+@section Styles {
+}
+@if (Model.Count() > 0)
+{
+
+    <div class="product-listing grid-type">
+        <div class="inner-listing">
+            <div class="row mlr_-20">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-6 plr-20 item-width mb-20">
+                        <div class="product-item">
+                            @if (item.IsSale)
+                            {
+                                <div class="main-label sale-label"><span>Sale</span></div>
+                            }
+                        <div class="product-item-inner">
+                            <div class="product-image">
+                                <a asp-route-id="@item.Id"
+                                   asp-route-catid="@item.ProductCategoryId"
+                                   asp-route-title="@item.Title.UrlEncode()"
+                                   asp-route="product-detail">
+                                    <img alt="@item.Title" src="@item.Thumb.ToImage(url)">
+                                </a>
+                                <div class="product-detail-inner">
+                                    <div class="detail-inner-left align-center">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <a asp-route="addcart" title="Thêm vào giỏ hàng"
+                                                   asp-route-productid="@item.Id"><i class="icofont-cart"></i><span></span></a>
+                                            </li>
+                                            <li class="pro-wishlist-icon">
+                                                @if (item.IsWishlist)
+                                                {
+
+                                                    <a title="Bỏ yêu thích" onclick="DeleteWishlist(@item.Id)">
+                                                        <span></span>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a title="yêu thích" onclick="Wishlist(@item.Id)">
+                                                        <span></span>
+                                                    </a>
+                                                }
+
+                                            </li>
+                                            @*<li class="pro-compare-icon">
+                            <a title="Compare" href="compare.html">
+                                <span></span>
+                            </a>
+                        </li>*@
+                                            <li class="pro-quickview-icon">
+                                                <a title="Quick View" onclick="getview(@item.Id)" class="popup-with-product">
+                                                    <span></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item-details">
+                                <div class="product-item-name">
+                                    <a asp-route-id="@item.Id"
+                                       asp-route-catid="@item.ProductCategoryId"
+                                       asp-route-title="@item.Title.UrlEncode()"
+                                       asp-route="product-detail">
+                                        @item.Title
+                                    </a>
+                                </div>
+                                <div class="rating-summary-block">
+                                    @if (item.ValueAssess.HasValue)
+                                    {
+                                        var rating = Math.Round((item.ValueAssess.Value / 5) * 100);
+                                        <div title="@rating%" class="rating-result">
+                                            <span style="width:@rating%"></span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div title="0%" class="rating-result">
+                                            <span style="width:0%"></span>
+                                        </div>
+                                    }
+
+                                </div>
+                                <div class="price-box">
+                                    <span class="price">@item.Price.ToCurrency()</span>
+                                    @if (item.OldPrice.HasValue && item.OldPrice > 0)
+                                    {
+
+                                        <del class="price old-price">@item.OldPrice.ToCurrency()</del>
+                                    }
+                                </div>
+                                <div class="product-des">
+                                    <p>@item.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    @if (Model.PageCount > 1)
+                    {
+                            @Html.PagedListPager(Model
+                           , page => Url.Action("Shop"
+                           , new { catId = ViewBag.CatId, page = page, pageSize = ViewBag.PageSize, sortBy = ViewBag.SortBy }),
+                           new PagedListRenderOptions
+                           {
+                               LinkToFirstPageFormat = "<<",
+                               LinkToPreviousPageFormat = "<",
+                               LinkToNextPageFormat = ">",
+                               LinkToLastPageFormat = ">>",
+                               DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                               MaximumPageNumbersToDisplay = 8,
+                               DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                               DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                               DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                               DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                               LiElementClasses = new string[] { "page-item" },
+                               PageClasses = new string[] { "page-link" }
+                           });
+
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

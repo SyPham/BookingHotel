@@ -1,0 +1,503 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var partner = ViewBag.Partner as IEnumerable<PartnerModel>;
+    var productCategory = ViewBag.ProductCategory as IEnumerable<ProductCategoryModel>;
+    var productCat = ViewBag.ProductCat as ProductCategoryModel;
+
+    string url = Convert.ToString(ViewBag.Url);
+    if (productCat == null)
+        ViewData["Title"] = "Sản phẩm";
+    else
+        ViewData["Title"] = productCat.MetaTitle;
+}
+@section metatags {
+    <vc:vc-metatag key-word="@productCat?.MetaKeywords" description="@productCat?.MetaDescription" />
+}
+@*<vc:vc-product-category id="@ViewBag.Id" />*@
+<vc:vc-banner />
+<section class="section-padding">
+    <div class="container pt-lg-4">
+        <div class="row">
+            @if (productCat != null)
+            {
+                <div class="col-md-12 mb-4">
+                    <div class="page-title-h5 d-flex align-items-center">
+                        <h5 class="my-0 text-gray-900">@productCat.Title</h5>
+                    </div>
+                </div>
+            }
+
+            <nav class="col-xl-12" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    @if (productCat != null)
+                    {
+                        <li class="breadcrumb-item active" aria-current="page">
+                            @productCat.Title
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Danh sách sản phẩm
+                        </li>
+                    }
+
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12 mb-4">
+                <div class="page-title-h5 d-flex align-items-center">
+                    <h5 class="my-0 text-gray-900"></h5>
+                    <div class="dropdown ml-auto">
+                        <a class="btn btn-secondary dropdown-toggle btn-sm border-white-btn" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sắp xếp: <span class="text-theme">Phổ biến</span> &nbsp;&nbsp;
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" id="percentage">Phần trăm</a>
+                            <a class="dropdown-item" id="increase">Giá tăng dần</a>
+                            <a class="dropdown-item" id="decrease">Giá giảm dần</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-sm-4">
+                <div class="filters shadow-sm rounded bg-white mb-4">
+                    <div class="filters-header border-bottom pl-4 pr-4 pt-3 pb-3">
+                        <h5 class="m-0">Lọc danh sách</h5>
+                    </div>
+                    <div class="filters-body">
+                        <div id="accordion">
+                            <div class="filters-card border-bottom p-4">
+                                <div class="filters-card-header" id="headingOne">
+                                    <h6 class="mb-0">
+                                        <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Thương hiệu <i class="icofont-thin-down float-right"></i>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="filters-card-body card-shop-filters">
+                                        @foreach (var item in partner)
+                                        {
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" data-value="@item.Id" class="custom-control-input partner" id="@("partner" + item.Id)">
+                                                <label class="custom-control-label" for="@("partner" + item.Id)">@item.Title </label>
+                                            </div>
+                                        }
+                                        <div class="mt-2"><a id="checkedAllPartner" style="cursor:pointer" class="link">Xem tất cả</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filters-card border-bottom p-4">
+                                <div class="filters-card-header" id="headingTwo">
+                                    <h6 class="mb-0">
+                                        <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+                                            Theo danh mục <i class="icofont-thin-down float-right"></i>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="collapsetwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="filters-card-body card-shop-filters">
+                                        @foreach (var item in productCategory)
+                                        {
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" data-value="@item.Id" class="custom-control-input productCategory" id="@("productCategory" + item.Id)">
+                                                <label class="custom-control-label" for="@("productCategory" + item.Id)">@item.Title </label>
+                                            </div>
+                                        }
+
+                                        <div class="mt-2"><a id="checkedAllProduct" style="cursor:pointer" class="link">Xem tất cả</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filters-card p-4 border-bottom">
+                                <div class="filters-card-header" id="headingOffer">
+                                    <h6 class="mb-0">
+                                        <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOffer" aria-expanded="true" aria-controls="collapseOffer">
+                                            Đánh giá <i class="icofont-thin-down float-right"></i>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="collapseOffer" class="collapse show" aria-labelledby="headingOffer" data-parent="#accordion">
+                                    <div class="filters-card-body card-shop-filters">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" data-value="5" class="custom-control-input rate" id="cb6">
+                                            <label class="custom-control-label text-warning" for="cb6"><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i> <small class="text-gray-800 float-right"></small></label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" data-value="4" class="custom-control-input rate" id="cb7">
+                                            <label class="custom-control-label text-warning" for="cb7">
+                                                <i class="icofont-star"></i>
+                                                <i class="icofont-star"></i>
+                                                <i class="icofont-star"></i>
+                                                <i class="icofont-star"></i>
+                                                <small class="text-gray-800 float-right">trở lên</small>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" data-value="3" class="custom-control-input rate" id="cb8">
+                                            <label class="custom-control-label text-warning" for="cb8">
+                                                <i class="icofont-star"></i>
+                                                <i class="icofont-star"></i>
+                                                <i class="icofont-star"></i>
+                                                <small class="text-gray-800 float-right">trở lên</small>
+                                            </label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" data-value="2" class="custom-control-input rate" id="cb9">
+                                            <label class="custom-control-label text-warning" for="cb9"><i class="icofont-star"></i><i class="icofont-star"></i> <small class="text-gray-800 float-right">trở lên</small></label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" data-value="1" class="custom-control-input rate" id="cb10">
+                                            <label class="custom-control-label text-warning" for="cb10"> <i class="icofont-star"></i> <small class="text-gray-800 float-right">trở lên</small></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filters-card p-4 border-bottom text-center">
+                                <button class="form-control-sm btn btn-sm btn-primary shadow-sm" id="removeAllChecked">XÓA TẤT CẢ</button>
+                                @* <button id="apply" class="form-control-sm btn btn-sm btn-danger bg-danger shadow-sm">ÁP DỤNG</button>*@
+                            </div>
+                            @*<div class="filters-card p-4 border-bottom">
+                                    <div class="filters-card-header">
+                                        <h6 class="mb-0">
+                                            <a href="#" class="btn-link" data-toggle="collapse" aria-expanded="true">
+                                                TAG <i class="icofont-thin-down float-right"></i>
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div class="collapse mt-2 show">
+                                        <span class="badge badge-light">Light</span>
+                                        <span class="badge badge-dark">Dark</span>
+                                        <span class="badge badge-primary">Primary</span>
+                                        <span class="badge badge-secondary">Secondary</span>
+                                        <span class="badge badge-success">Success</span>
+                                        <span class="badge badge-danger">Danger</span>
+                                        <span class="badge badge-warning">Warning</span>
+                                        <span class="badge badge-info">Info</span>
+                                        <span class="badge badge-light">Light</span>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-sm-8">
+                <div class="row" id="productList">
+
+                    @*<div class="col-xl-12 text-center">
+                            <a href="#" class="btn btn-primary shadow btn-sm show-more-btn">Loading <i class="fas fa-circle-notch fa-spin"></i></a>
+                        </div>*@
+
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 d-flex justify-content-center">
+                        <ul id="pagination" class="pagination">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            function getTotalDay(saleDeadline, saleStart) {
+                if (saleDeadline === null) return 0;
+                if (saleStart === null) return 0;
+                let oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                let firstDate = new Date(saleStart);
+                let secondDate = new Date(saleDeadline);
+                let diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+                return diffDays;
+            }
+            function urlEncode(str) {
+                if (str === null || str === '' || str === undefined) return '';
+
+                return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+            }
+            function isImage(image_url) {
+                var request = new XMLHttpRequest();
+                request.open("GET", image_url, true);
+                request.send();
+                request.onload = function () {
+                    status = request.status;
+                    if (request.status == 200) //if(statusText == OK)
+                    {
+                        return true;
+                    } else {
+                        return false;
+
+                    }
+                }
+            }
+            function toImage(url, baseUrl) {
+                let value = baseUrl + url;
+
+                if (isImage(value)) {
+                    return baseUrl + url;
+                }
+                return "/images/no-img.jpg";
+            }
+            // format currency các sử dụng formatNumber(100000, '.', ',') 100,000
+            function formatCurrency(nStr, decSeperate = '.', groupSeperate = ',') {
+                if (nStr === null || nStr === 0 || nStr === undefined) return '';
+                nStr += '';
+                let x = nStr.split(decSeperate);
+                let x1 = x[0];
+                let x2 = x.length > 1 ? '.' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(x1)) {
+                    x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
+                }
+                return x1 + x2;
+            }
+            function serialize(obj) {
+                var str = [];
+                for (var p in obj)
+                    if (obj.hasOwnProperty(p)) {
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    }
+                return str.join("&");
+            }
+            const url = @Html.Raw(Json.Serialize(url));
+            const Identity = @Html.Raw(Json.Serialize(User.Identity.Name));
+            const config = {
+                pageSize: 12,
+                pageIndex: 1
+            };
+            const product = {
+                init: function () {
+                    product.loadData(product.resetSearchValue());
+                    product.registerEvent();
+                },
+                loadData: function (mObj,changePageSize = false) {
+                    $.ajax({
+                        url: "/product/loaddata",
+                        data: JSON.stringify(mObj),
+                        type: "POST",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response);
+                            if (response.status) {
+                                const model = response.data;
+
+                                let html = '';
+                                $.each(model, function (i, item) {
+                                    let priceHtml = '';
+                                    if (item.isSale) {
+                                        priceHtml += ` <s>${formatCurrency(item?.oldPrice)}</s>`
+                                    }
+
+                                    let saleHtml = '';
+                                    if (item.isSale) {
+                                        saleHtml += `<p class="text-gray-500"><i class="icofont-clock-time"></i> Kết thúc sau ${getTotalDay(item.saleDeadLine, item.saleStart)} ngày</p>`
+                                    }
+                                    let buyButton = '';
+                                        buyButton += `<a href="them-gio-hang/${item.id}"
+                                            class="btn btn-sm btn-white ml-auto text-danger"><i class="icofont-cart"></i>Mua ngay</a>`;
+                                    html += `
+              <div class="col-xl-4 col-sm-6 mb-4">
+                                        <div class="custom-card shadow-sm h-100">
+                                            <div class="custom-card-image">
+                                                <a href="/san-pham/chi-tiet/${item.id}/${item.productCategoryId}/${urlEncode(item.title)}">
+                                                    <img class="img-fluid item-img" src="${toImage(item.thumb, url)}">
+                                                </a>
+                                                <div class="button-g-btn button-g-btn-up">
+                                                    <img class="img-fluid" src="${toImage(item.objPartner.thumb, url)}">
+                                                    <span>${item.objPartner.title}</span>
+                                                </div>
+                                            </div>
+                                            <div class="p-3 pt-4">
+                                                <div class="custom-card-body">
+                                                    <h6 class="mb-3">
+                                                        <a class="text-gray-900" href="/san-pham/chi-tiet/${item.id}/${item.productCategoryId}/${urlEncode(item.title)}">
+                                                            ${item.title}
+                                                        </a>
+                                                    </h6>
+                                                    <p class="text-gray-500 mb-2">
+                                                        <i class="icofont-price"></i>
+                                                      ${priceHtml}
+                                                        <span class="text-gray-600 font-weight-bold">${formatCurrency(item?.price)}</span>
+                                                    </p>
+                                                  ${saleHtml}
+                                                </div>
+                                                <div class="custom-card-footer d-flex align-items-center">
+                                                    <span class="text-danger">
+                                                        <a href="/san-pham/chi-tiet/${item.id}/${item.productCategoryId}/${urlEncode(item.title)}">
+                                                            Xem thêm
+                                                        </a>
+                                                    </span>
+                                                    ${buyButton}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+                                });
+                                $('#productList').html(html);
+                                product.paging(response.total, function () {
+                                    mObj.page = config.pageIndex;
+                                    product.loadData(mObj, changePageSize);
+                                }, changePageSize);
+                                product.registerEvent();
+                            }
+                        },
+                        error: function (errormessage) {
+                            console.log(errormessage);
+                        }
+                    });
+                },
+                getSearchValue: function () {
+                    let rate = [];
+                    let partnerIds = [];
+                    let catIds = [];
+                    $('#collapseOffer input:checkbox:checked').each(function (i) {
+                        rate[i] = Number($(this).attr('data-value'));
+                    });
+                    $('#collapseOne input:checkbox:checked').each(function (i) {
+                        partnerIds[i] = Number($(this).attr('data-value'));
+                    });
+                    $('#collapsetwo input:checkbox:checked').each(function (i) {
+                        catIds[i] = Number($(this).attr('data-value'));
+                    });
+                    var mObj = {
+                        catIds: catIds,
+                        increase: false,
+                        decrease: false,
+                        percent: false,
+                        partnerIds: partnerIds,
+                        rate: rate,
+                        page: config.pageIndex,
+                        pageSize: config.pageSize,
+                    };
+                    return mObj;
+                },
+                resetSearchValue: function () {
+                    config.pageIndex = 1;
+                    return {
+                        catIds: [],
+                        increase: false,
+                        decrease: false,
+                        percent: false,
+                        partnerIds: [],
+                        rate: [],
+                        page: config.pageIndex,
+                        pageSize: config.pageSize,
+                    }
+                },
+                registerEvent: function () {
+                    $('#removeAllChecked').off('click').on('click', function () {
+                        $('input[type=checkbox]').prop('checked', false);
+                        product.loadData(product.resetSearchValue(), true);
+                    })
+                    $('#apply').off('click').on('click', function () {
+                        var mObj = product.getSearchValue();
+                        product.search(mObj);
+                    })
+                    $('#percentage').off('click').on('click', function () {
+                        var mObj = product.getSearchValue();
+                        mObj.percent = true;
+                        product.searchPercentage(mObj);
+                    })
+                    $('#increase').off('click').on('click', function () {
+                        var mObj = product.getSearchValue();
+                        mObj.increase = true;
+                        product.searchIncrease(mObj);
+                    })
+                    $('#decrease').off('click').on('click', function () {
+                        var mObj = product.getSearchValue();
+                        mObj.decrease = true;
+                        product.searchDecrease(mObj);
+                    })
+                    $('#checkedAllPartner').off('click').on('click', function () {
+                        $('#collapseOne input:checkbox').each(function (i) {
+                            $(this).prop('checked', true);
+                        });
+                        var mObj = product.getSearchValue();
+                        product.loadData(mObj);
+                    })
+                    $('#checkedAllProduct').off('click').on('click', function () {
+                        $('#collapsetwo input:checkbox').each(function (i) {
+                            $(this).prop('checked', true);
+                        });
+                        var mObj = product.getSearchValue();
+                        product.loadData(mObj);
+                    })
+                    $('.productCategory').off('click').on('click', function () {
+                        let val = $(this).val();
+                        if (val === 'on') {
+                            var mObj = product.getSearchValue();
+                            product.loadData(mObj);
+                        }
+                    })
+                    $('.partner').off('click').on('click', function () {
+                        let val = $(this).val();
+                        if (val === 'on') {
+                            var mObj = product.getSearchValue();
+                            product.loadData(mObj);
+                        }
+                    })
+                    $('.rate').off('click').on('click', function () {
+                        let val = $(this).val();
+                        if (val === 'on') {
+                            var mObj = product.getSearchValue();
+                            product.loadData(mObj);
+                        }
+                    })
+                },
+                search: function (mObj, changePageSize = false) {
+                    product.loadData(mObj, changePageSize);
+                },
+                searchPercentage: function (mObj, changePageSize = false) {
+                    product.loadData(mObj, changePageSize);
+                },
+                searchIncrease: function (mObj, changePageSize = false) {
+                    product.loadData(mObj, changePageSize);
+                },
+                searchDecrease: function (mObj, changePageSize = false) {
+                    product.loadData(mObj, changePageSize);
+               },
+                paging: function (totalRow, callback, changePageSize) {
+                   var totalPage = Math.ceil(totalRow / config.pageSize);
+
+                   //Unbind pagination if it existed or click change pagesize
+                   if ($('#pagination a').length === 0 || changePageSize === true) {
+                       $('#pagination').empty();
+                       $('#pagination').removeData("twbs-pagination");
+                       $('#pagination').unbind("page");
+                   }
+
+                   $('#pagination').twbsPagination({
+                       totalPages: totalPage === 0 ? 1 : totalPage,
+                       hideOnlyOnePage: true,
+                       initiateStartPageClick: false,
+                       first: "<<",
+                       next: ">",
+                       last: ">>",
+                       prev: "<",
+                       visiblePages: 8,
+                       itemsPerPage: config.pageSize,
+                       onPageClick: function (event, page) {
+                           config.pageIndex = page;
+                           setTimeout(callback, 500);
+                       }
+                   });
+               }
+            };
+            product.init();
+
+        });
+    </script>
+}

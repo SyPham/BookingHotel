@@ -1,0 +1,232 @@
+﻿@model CustomerModel
+@using  System.Security.Claims;
+@{
+    ViewData["Title"] = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string url = Convert.ToString(ViewBag.Url);
+}
+@section metatags {
+    <vc:vc-metatag key-word="" description="" />
+}
+@section Styles {
+    <style>
+        input[type='file'].hidden {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            font-size: 50px;
+            cursor: pointer;
+            opacity: 0;
+            -moz-opacity: 0;
+            filter: Alpha(Opacity=0);
+        }
+
+        img.fileDownload {
+            height: auto;
+            width: auto;
+            padding: 0;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 4px 0 0;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        div.hiddenFileInputContainter {
+            position: relative;
+            display: inline-block;
+            width: auto;
+            height: auto;
+            overflow: hidden;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+    </style>
+}
+<section class="user-panel-body py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-sm-4">
+                <div class="user-panel-body-left">
+                    <div class="bg-white rounded p-4 mb-4 text-center shadow-sm">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="hiddenFileInputContainter" id="avatar-profile" data-toggle="tooltip" data-placement="top" title="Nhấn vào ảnh đại diện để cập nhật ảnh mới!">
+                                <img class="mb-3 mt-2 user-info-img" alt="@Model.FullName" src="@Model.Avatar.ToImage(url)" />
+                                <input type="file" id="upload-avatar" class="hidden" accept="image/*">
+                            </div>
+
+                            <h6 class="text-black mb-2 text-gray-900">@Model.FullName</h6>
+                            <p class="m-0"><a href="@("mailto:" + Model.Email)" class="__cf_email__">@Model.Email</a></p>
+                            <p class="mb-3">@Model.Phone</p>
+                        }
+
+
+                        <button type="button" class="btn btn-primary btn-block" onclick="location.href='/dang-xuat';">
+                            <i class="icofont-logout"></i>
+                            Đăng xuất
+                        </button>
+                        <p class="mb-0 mt-3">
+                            <a href="/thong-tin-ca-nhan">
+                                <i class="icofont icofont-edit-alt"></i>
+                                Cập nhật thông tin cá nhân
+                            </a>
+                        </p>
+                    </div>
+                    <div class="user-panel-sidebar-link mb-4 bg-white rounded shadow-sm overflow-hidden">
+                        <a href="/ma-giam-gia-cua-ban"><i class="icofont-ticket"></i> Mã giảm giá của bạn</a>
+                        @*<a href="#"><i class="icofont-sale-discount"></i> Quản lý tích điểm</a>*@
+                        <a href="/danh-sach-yeu-thich-cua-ban"><i class="icofont-heart"></i> Danh sách yêu thích</a>
+                        @*<a href="#"><i class="icofont-star"></i> Đánh giá của bạn</a>*@
+                        @*<a href="#"><i class="icofont-live-messenger"></i> Phản hồi về hệ thống</a>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-sm-8">
+                <div class="mb-4">
+                    <h4 class="font-weight-light mt-3">THÔNG TIN CÁ NHÂN ?</h4>
+                    @if (User.Identity.Name != null && ViewBag.IsVerified == false)
+                    {
+                        <p class="text-danger">
+                            Vui lòng xác thực tài khoản của bạn! <a id="vertify-email" href="">Tại đây</a>
+                        </p>
+                    }
+
+                </div>
+                <form asp-route="customer-profile">
+                    <div class="form-group">
+                        <div id="div_Alert" class="alert alert-info mb-4" style="padding:10px !important; margin-top:5px !important">
+                            <strong>Thông báo :</strong> <span id="span_Message">Vui lòng nhập đầy đủ thông tin trước khi lưu</span>
+                        </div>
+                        <message content="@ViewBag.Content" type="@ViewBag.Type" />
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="mb-1">Họ Tên <small class="text-danger">*</small></label>
+                                <div class="position-relative icon-form-control">
+                                    <input placeholder="" asp-for="FullName" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="mb-1">Email <small class="text-danger">*</small></label>
+                                <div class="position-relative icon-form-control">
+                                    <input placeholder="" asp-for="Email" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="mb-1">Số điện thoại <small class="text-danger">*</small></label>
+                                <div class="position-relative icon-form-control">
+                                    <input placeholder="" asp-for="Phone" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="mb-1">Ngày sinh<small class="text-danger">*</small></label>
+                                <div class="position-relative icon-form-control">
+                                    <input asp-for="Birthday" type="date" asp-format="{0:dd-MM-yyyy}" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="mb-1">Địa chỉ<small class="text-danger">*</small></label>
+                        <div class="position-relative">
+                            <textarea class="form-control pt-3" asp-for="Address" rows="4" placeholder="..."></textarea>
+                        </div>
+                    </div>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <div class="col-sm-10 d-flex justify-content-start">
+                                <div class="form-check">
+                                    <input class="form-check-input" asp-for="Gender" type="radio" name="gender" id="male" value="true" checked>
+                                    <label class="form-check-label" for="male">
+                                        Nam
+                                    </label>
+                                </div>
+                                <div class="form-check ml-4">
+                                    <input class="form-check-input" asp-for="Gender" type="radio" name="gender" id="female" value="false">
+                                    <label class="form-check-label" for="female">
+                                        Nữ
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="d-flex align-items-center mt-4">
+                        <button class="btn btn-primary text-uppercas" type="submit"> Xác nhận </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#avatar-profile').tooltip('toggle');
+            $('#avatar-profile').tooltip('show');
+            $("#vertify-email").off('click').on('click', function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: `/xac-thuc-tai-khoan`,
+                    dataType: 'Json',
+                    success: function (result) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Vui lòng kiểm tra email của bạn để kích hoạt tài khoản!'
+                        })
+                    }
+                });
+            });
+
+            $("#upload-avatar").off('change').on('change', function (event) {
+                var formData = new FormData();
+                formData.append('file', $(this)[0].files[0]);
+                event.preventDefault();
+                $.ajax({
+                    url: @Html.Raw(Json.Serialize(ViewBag.UploadUrl)),
+                    type: 'PUT',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    headers: {
+                        'Authorization': 'Bearer ' + @Html.Raw(Json.Serialize(ViewBag.JwtToken))
+                    },
+                    success: function (result) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Cập nhật ảnh đại diện thành công!'
+                        });
+                        window.location.reload();
+                    },
+                    error: function (error) {
+
+                    }
+                });
+            });
+
+
+
+        });
+    </script>
+}

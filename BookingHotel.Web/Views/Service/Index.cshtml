@@ -1,0 +1,147 @@
+﻿@model X.PagedList.IPagedList<ServiceModel>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string url = Convert.ToString(ViewBag.Url);
+    var catModel = ViewBag.ServiceCategory as ServiceCategoryModel;
+    if (catModel == null) ViewData["Title"] = "Dịch vụ"; else ViewData["Title"] = catModel.Title;
+
+}
+@section metatags {
+    <vc:vc-metatag key-word="@catModel?.MetaKeywords" description="@catModel?.MetaDescription" />
+}
+<vc:vc-banner />
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <div class="page-title-h5 d-flex align-items-center">
+                    <h5 class="my-0 text-gray-900">@catModel.Title.ToUpper()</h5>
+                </div>
+            </div>
+            <nav class="col-xl-12" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        @catModel.Title
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 col-sm-8">
+                <div class="row">
+                    @if (Model.Count > 0)
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xl-6 col-sm-6 mb-6">
+                                <div class="custom-card shadow-sm bg-white h-100">
+                                    <div class="custom-card-image">
+                                        <a asp-route-id="@item.Id"
+                                           asp-route-catid="@item.ServiceCategoryId"
+                                           asp-route-title="@item.Title.UrlEncode()"
+                                           asp-route="service-detail">
+                                            <img class="img-fluid item-img" src="@item.Thumb.ToImage(url)" />
+                                        </a>
+                                        <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
+                                            <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M2160 0C1440 240 720 240 720 240H0V480H2880V0H2160Z" fill="currentColor">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="p-3">
+                                        <div class="custom-card-body">
+                                            <h6 class="mb-1">
+                                                <a asp-route-id="@item.Id"
+                                                   asp-route-catid="@item.ServiceCategoryId"
+                                                   asp-route-title="@item.Title.UrlEncode()"
+                                                   asp-route="service-detail">
+                                                    @item.Title
+                                                </a>
+                                            </h6>
+                                            <p class="text-gray-900">@item.Description</p>
+                                        </div>
+                                        <div class="custom-card-footer d-flex align-items-center">
+                                            <a asp-route-id="@item.Id"
+                                               asp-route-catid="@item.ServiceCategoryId"
+                                               asp-route-title="@item.Title.UrlEncode()"
+                                               asp-route="service-detail">
+                                                Xem thêm
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                        @if (Model.PageCount > 1)
+                        {
+                            <div class="col-xl-12 p-3 d-flex justify-content-center">
+                                <div class="pagination">
+                                    @Html.PagedListPager(Model
+                                   , page => Url.Action("Index"
+                                   , new { page = page, catID = catModel.Id, title = catModel.Title.UrlEncode() }),
+                                   new PagedListRenderOptions
+                                   {
+                                       LinkToFirstPageFormat = "<<",
+                                       LinkToPreviousPageFormat = "<",
+                                       LinkToNextPageFormat = ">",
+                                       LinkToLastPageFormat = ">>",
+                                       DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                                       MaximumPageNumbersToDisplay = 8,
+                                       DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                                       DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                                       DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                                       DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                       LiElementClasses = new string[] { "page-item" },
+                                       PageClasses = new string[] { "page-link" }
+                                   })
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    @*<div class="col-xl-12 text-center">
+                            <a href="#" class="btn btn-primary shadow btn-sm show-more-btn">Loading <i class="fas fa-circle-notch fa-spin"></i></a>
+                        </div>*@
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-4">
+                <div class="filters shadow-sm rounded bg-white mb-4">
+                    <div class="filters-body">
+                        <div id="accordion">
+                            <vc:vc-product-hot-detail />
+
+                            @*<div class="filters-card p-4 border-bottom">
+                                    <div class="filters-card-header">
+                                        <h6 class="mb-0">
+                                            <a href="#" class="btn-link" data-toggle="collapse" aria-expanded="true">
+                                                TAG
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div class="collapse mt-2 show">
+                                        <span class="badge badge-light">Light</span>
+                                        <span class="badge badge-dark">Dark</span>
+                                        <span class="badge badge-primary">Primary</span>
+                                        <span class="badge badge-secondary">Secondary</span>
+                                        <span class="badge badge-success">Success</span>
+                                        <span class="badge badge-danger">Danger</span>
+                                        <span class="badge badge-warning">Warning</span>
+                                        <span class="badge badge-info">Info</span>
+                                        <span class="badge badge-light">Light</span>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
