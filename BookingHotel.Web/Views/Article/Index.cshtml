@@ -13,156 +13,104 @@
 @section metatags {
     <vc:vc-metatag key-word="" description="" />
 }
-
-<!-- Bread Crumb STRAT -->
-<div class="banner inner-banner1">
-    <div class="container">
-        <section class="banner-detail center-xs">
-            @if (catModel != null)
-            {
-                <h1 class="banner-title right-side float-none-xs">@catModel.Title</h1>
-
-            }
-            else
-            {
-                <h1 class="banner-title right-side float-none-xs">Tin tức</h1>
-            }
-            <div class="bread-crumb">
-                <ul>
-                    <li><a href="/"><i class="fa fa-home"></i>Trang chủ</a>/</li>
-                    @if (catModel != null)
-                    {
-                        <li><span>Tin tức</span>/</li>
-                        <li><span>@catModel.Title</span></li>
-                    }
-                    else
-                    {
-                        <li><span>Tin tức</span></li>
-                    }
-
+<section class="container section section-first">
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h1 class="title title--h1 js-lines">News / Events.</h1>
+        </div>
+        <div class="col-12">
+            <!-- Filters -->
+            <div class="select js-scroll-show">
+                <span class="placeholder">Select category</span>
+                <ul class="filter">
+                    <li class="filter__item active" data-filter="*"><a class="filter__link active" href="#filter">All</a></li>
+                    <li class="filter__item" data-filter=".category-news"><a class="filter__link" href="#filter">News</a></li>
+                    <li class="filter__item" data-filter=".category-adventure"><a class="filter__link" href="#filter">Adventure</a></li>
+                    <li class="filter__item" data-filter=".category-events"><a class="filter__link" href="#filter">Events</a></li>
+                    <li class="filter__item" data-filter=".category-inspired"><a class="filter__link" href="#filter">Inspired</a></li>
                 </ul>
+                <input type="hidden" name="changemetoo" />
             </div>
-        </section>
+        </div>
     </div>
-</div>
-<!-- Bread Crumb END -->
-<!-- CONTAIN START -->
-<section class="ptb-60">
-    <div class="container">
-        <div class="row">
-            <div class="col-9">
-                <div class="blog-listing">
-                    <div class="row mlr_-20">
-                        @if (Model.Count > 0)
-                        {
-                            @foreach (var item in Model)
-                            {
-                                <div class="col-xl-6 col-lg-6 col-12 plr-20">
-                                    <div class="blog-item">
-                                        <div class="blog-media mb-20">
-                                            <img src="@item.Thumb.ToBlogImage(url)" alt="@item.Title">
-                                            <div class="blog-effect"></div>
-                                            <a asp-route-id="@item.Id"
-                                               asp-route-catid="@item.ArticleCategoryId"
-                                               asp-route-title="@item.Title.UrlEncode()"
-                                               asp-route="article-detail" class="read">
-                                                &nbsp;
-                                            </a>
-                                            @if (item.CreateTime.HasValue)
-                                            {
-                                                <div class="date">
-                                                    @item.CreateTime.Value.ToString("dd") <br>
-                                                    <span>@item.CreateTime.Value.ToString("MMM")</span>
-                                                </div>
-                                            }
-
-                                        </div>
-                                        <div class="blog-detail">
-                                            <h4 class="blog-title">
-                                                <a asp-route-id="@item.Id"
-                                                   asp-route-catid="@item.ArticleCategoryId"
-                                                   asp-route-title="@item.Title.UrlEncode()"
-                                                   asp-route="article-detail">
-                                                    @item.Title
-                                                </a>
-
-                                            </h4>
-                                            <div class="post-info">
-                                                @*<ul>
-                                                    <li><span>By</span><a href="#"> cormon jons</a></li>
-                                                    <li><a href="#">(5) comments</a></li>
-                                                </ul>*@
-                                            </div>
-                                            <p>
-                                                @item.Description
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 d-flex justify-content-center">
-                            @if (Model.PageCount > 1)
-                            {
-                                @if (ViewBag.ArticleCategory != null)
-                                {
-                                        <div class="pagination-bar">
-                                            @Html.PagedListPager(Model
-                                           , page => Url.Action("Index"
-                                           , new { page = page, catID = catModel.Id, title = catModel.Title.UrlEncode() }),
-                                           new PagedListRenderOptions
-                                           {
-                                               LinkToFirstPageFormat = "<<",
-                                               LinkToPreviousPageFormat = "<",
-                                               LinkToNextPageFormat = ">",
-                                               LinkToLastPageFormat = ">>",
-                                               DisplayEllipsesWhenNotShowingAllPageNumbers = false,
-                                               MaximumPageNumbersToDisplay = 8,
-                                               DisplayLinkToFirstPage = PagedListDisplayMode.Always,
-                                               DisplayLinkToLastPage = PagedListDisplayMode.Always,
-                                               DisplayLinkToNextPage = PagedListDisplayMode.Always,
-                                               DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
-                                               LiElementClasses = new string[] { "page-item" },
-                                               PageClasses = new string[] { "page-link" }
-                                           });
-                                        </div>
-
-                                }
-                                else
-                                {
-                                       
-                                            @Html.PagedListPager(Model
-                                           , page => Url.Action("Index"
-                                           , new { page = page }),
-                                           new PagedListRenderOptions
-                                           {
-                                               LinkToFirstPageFormat = "<<",
-                                               LinkToPreviousPageFormat = "<",
-                                               LinkToNextPageFormat = ">",
-                                               LinkToLastPageFormat = ">>",
-                                               DisplayEllipsesWhenNotShowingAllPageNumbers = false,
-                                               MaximumPageNumbersToDisplay = 8,
-                                               DisplayLinkToFirstPage = PagedListDisplayMode.Always,
-                                               DisplayLinkToLastPage = PagedListDisplayMode.Always,
-                                               DisplayLinkToNextPage = PagedListDisplayMode.Always,
-                                               DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
-                                               LiElementClasses = new string[] { "page-item" },
-                                               PageClasses = new string[] { "page-link" }
-                                           });
-                                       
-
-                                }
-
-                            }
-                        </div>
-                    </div>
-                </div>
+    <div class="flex-container-z js-news js-sort mt-4">
+        <div class="gutter-sizer"></div>
+        <!-- itemNews -->
+        <div class="itemNews category-adventure js-scroll-opacity">
+            <figure class="itemNews__img-wrap">
+                <a class="itemNews__link" href="#">
+                    <div class="itemNews__date">Adventure <span>- 29 Sep 2019</span></div>
+                    <img class="cover lazyload" src="assets/images/image_news_01.jpg" alt="" />
+                </a>
+            </figure>
+            <div class="itemNews__details">
+                <h4 class="title title--h4 js-lines">An amazing adventure in the mountain reserves.</h4>
             </div>
-            <vc:vc-article-category-right></vc:vc-article-category-right>
+        </div>
+
+        <!-- itemNews -->
+        <div class="itemNews category-news js-scroll-opacity">
+            <figure class="itemNews__img-wrap">
+                <a class="itemNews__link" href="blog_post.html">
+                    <div class="itemNews__date">News <span>- 27 Sep 2019</span></div>
+                    <img class="cover lazyload" src="assets/images/image_news_02.jpg" alt="" />
+                </a>
+            </figure>
+            <div class="itemNews__details">
+                <h4 class="title title--h4 js-lines">Big discounts on air travel in the fall season.</h4>
+            </div>
+        </div>
+
+        <!-- itemNews -->
+        <div class="itemNews category-events js-scroll-opacity">
+            <figure class="itemNews__img-wrap">
+                <a class="itemNews__link" href="blog_post.html">
+                    <div class="itemNews__date">Events <span>- 24 Sep 2019</span></div>
+                    <img class="cover lazyload" src="assets/images/image_news_03.jpg" alt="" />
+                </a>
+            </figure>
+            <div class="itemNews__details">
+                <h4 class="title title--h4 js-lines">New luxury cozy houses for all families at attractive prices.</h4>
+            </div>
+        </div>
+
+        <!-- itemNews -->
+        <div class="itemNews category-inspired js-scroll-opacity">
+            <figure class="itemNews__img-wrap">
+                <a class="itemNews__link" href="blog_post.html">
+                    <div class="itemNews__date">Inspired <span>- 18 Sep 2019</span></div>
+                    <img class="cover lazyload" src="assets/images/image_news_04.jpg" alt="" />
+                </a>
+            </figure>
+            <div class="itemNews__details">
+                <h4 class="title title--h4 js-lines">How to prepare for the start of your vacation.</h4>
+            </div>
+        </div>
+
+        <!-- itemNews -->
+        <div class="itemNews category-adventure js-scroll-opacity">
+            <figure class="itemNews__img-wrap">
+                <a class="itemNews__link" href="blog_post.html">
+                    <div class="itemNews__date">Adventure <span>- 10 Sep 2019</span></div>
+                    <img class="cover lazyload" src="assets/images/image_news_05.jpg" alt="" />
+                </a>
+            </figure>
+            <div class="itemNews__details">
+                <h4 class="title title--h4 js-lines">Hurry up to get a ticket for a Mediterranean trip on a cruise ship.</h4>
+            </div>
+        </div>
+
+        <!-- itemNews -->
+        <div class="itemNews category-news js-scroll-opacity">
+            <figure class="itemNews__img-wrap">
+                <a class="itemNews__link" href="blog_post.html">
+                    <div class="itemNews__date">News <span>- 01 Sep 2019</span></div>
+                    <img class="cover lazyload" src="assets/images/image_news_06.jpg" alt="" />
+                </a>
+            </figure>
+            <div class="itemNews__details">
+                <h4 class="title title--h4 js-lines">The beginning of a new fall season at low prices.</h4>
+            </div>
         </div>
     </div>
 </section>
-<!-- CONTAINER END --> 
