@@ -6,10 +6,11 @@
 @{
     string url = Convert.ToString(ViewBag.Url);
 }
+
 <!-- Intro -->
 <section class="intro">
     <div class="intro__bg-wrap">
-        <div class="overlay intro__bg js-image js-parallax js-scale-down" data-image="assets/images/intro_about.jpg"></div>
+        <div class="overlay intro__bg js-image js-parallax js-scale-down" data-image="/assets/images/intro_about.jpg"></div>
     </div>
     <div class="container intro__container">
         <div class="row h-100 align-items-center">
@@ -59,22 +60,22 @@
             <div class="swiper-wrapper">
                 <!-- Slide 1 -->
                 <div class="swiper-slide">
-                    <div class="coverSlider js-image" data-image="assets/images/image_header_04.jpg"></div>
+                    <div class="coverSlider js-image" data-image="/assets/images/image_header_04.jpg"></div>
                 </div>
 
                 <!-- Slide 2 -->
                 <div class="swiper-slide">
-                    <div class="coverSlider js-image" data-image="assets/images/about_image_02.jpg"></div>
+                    <div class="coverSlider js-image" data-image="/assets/images/about_image_02.jpg"></div>
                 </div>
 
                 <!-- Slide 3 -->
                 <div class="swiper-slide">
-                    <div class="coverSlider js-image" data-image="assets/images/image_header_04.jpg"></div>
+                    <div class="coverSlider js-image" data-image="/assets/images/image_header_04.jpg"></div>
                 </div>
 
                 <!-- Slide 4 -->
                 <div class="swiper-slide">
-                    <div class="coverSlider js-image" data-image="assets/images/image_header_03.jpg"></div>
+                    <div class="coverSlider js-image" data-image="/assets/images/image_header_03.jpg"></div>
                 </div>
             </div>
 
@@ -136,7 +137,7 @@
 <!-- Section Video -->
 <div class="section">
     <div class="video-container js-video youtube-video-place" data-yt-url="https://www.youtube.com/embed/HSsqzzuGTPo?autoplay=1&amp;">
-        <div class="video__poster js-image js-parallax" data-image="assets/images/cover_video.jpg">
+        <div class="video__poster js-image js-parallax" data-image="/assets/images/cover_video.jpg">
             <button class="video__btn" type="button"></button>
         </div>
         <div class="video-note">
@@ -159,7 +160,7 @@
         <div class="col-12 col-md-6 col-lg-4 js-scroll-show">
             <div class="itemPerson">
                 <figure class="itemPerson__img-wrap">
-                    <img class="cover lazyload" src="assets/images/team-person1.jpg" alt="Robert Fox" />
+                    <img class="cover lazyload" src="/assets/images/team-person1.jpg" alt="Robert Fox" />
                 </figure>
                 <div class="itemPerson__details">
                     <h4 class="title title--h4">Robert Fox</h4>
@@ -172,7 +173,7 @@
         <div class="col-12 col-md-6 col-lg-4 js-scroll-show">
             <div class="itemPerson">
                 <figure class="itemPerson__img-wrap">
-                    <img class="cover lazyload" src="assets/images/team-person2.jpg" alt="Kristin Mccoy" />
+                    <img class="cover lazyload" src="/assets/images/team-person2.jpg" alt="Kristin Mccoy" />
                 </figure>
                 <div class="itemPerson__details">
                     <h4 class="title title--h4">Kristin Mccoy</h4>
@@ -185,7 +186,7 @@
         <div class="col-12 col-md-6 col-lg-4 js-scroll-show">
             <div class="itemPerson">
                 <figure class="itemPerson__img-wrap">
-                    <img class="cover lazyload" src="assets/images/team-person3.jpg" alt="Shane Watson" />
+                    <img class="cover lazyload" src="/assets/images/team-person3.jpg" alt="Shane Watson" />
                 </figure>
                 <div class="itemPerson__details">
                     <h4 class="title title--h4">Shane Watson</h4>
@@ -198,7 +199,7 @@
         <div class="col-12 col-md-6 col-lg-4 js-scroll-show">
             <div class="itemPerson">
                 <figure class="itemPerson__img-wrap">
-                    <img class="cover lazyload" src="assets/images/team-person4.jpg" alt="Francisco Pena" />
+                    <img class="cover lazyload" src="/assets/images/team-person4.jpg" alt="Francisco Pena" />
                 </figure>
                 <div class="itemPerson__details">
                     <h4 class="title title--h4">Francisco Pena</h4>
@@ -211,7 +212,7 @@
         <div class="col-12 col-md-6 col-lg-4 js-scroll-show">
             <div class="itemPerson">
                 <figure class="itemPerson__img-wrap">
-                    <img class="cover lazyload" src="assets/images/team-person5.jpg" alt="Calvin Flores" />
+                    <img class="cover lazyload" src="/assets/images/team-person5.jpg" alt="Calvin Flores" />
                 </figure>
                 <div class="itemPerson__details">
                     <h4 class="title title--h4">Calvin Flores</h4>
@@ -224,7 +225,7 @@
         <div class="col-12 col-md-6 col-lg-4 js-scroll-show">
             <div class="itemPerson">
                 <figure class="itemPerson__img-wrap">
-                    <img class="cover lazyload" src="assets/images/team-person6.jpg" alt="Kathryn Cooper" />
+                    <img class="cover lazyload" src="/assets/images/team-person6.jpg" alt="Kathryn Cooper" />
                 </figure>
                 <div class="itemPerson__details">
                     <h4 class="title title--h4">Kathryn Cooper</h4>
@@ -245,3 +246,5 @@
         </div>
     </div>
 </section>	
+@section Scripts {
+    }

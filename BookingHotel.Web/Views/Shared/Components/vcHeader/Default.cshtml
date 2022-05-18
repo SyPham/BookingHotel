@@ -5,6 +5,7 @@
 }
 @{
     string url = Convert.ToString(ViewBag.Url);
+    string navClass = Convert.ToString(ViewBag.NavClass);
     var accountType = "";
     var userName = "";
     if (string.IsNullOrEmpty(User.Identity.Name) == false)

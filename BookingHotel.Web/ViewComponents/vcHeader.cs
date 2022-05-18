@@ -32,6 +32,7 @@ namespace BookingHotel.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            ViewBag.NavClass = 1 != 1 ?  "navbar navbar-white navbar-overlay" : "navbar";
             var response = await client.GetAsync($"api/abount/getfirst");
 
             if (response == null)

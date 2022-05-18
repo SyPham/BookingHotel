@@ -42,11 +42,9 @@
 
 'use strict';
 $(document).ready(function() {
-
     /*-----------------------------------------------------------------
       01. Detect device mobile
     -------------------------------------------------------------------*/
-	
     var isMobile = false; 
     if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         $('html').addClass('touch');
@@ -696,7 +694,7 @@ $(document).ready(function() {
     /*-----------------------------------------------------------------
       16. Style background image
     -------------------------------------------------------------------*/	
-  
+
     $('.js-image').each(function(){
         var dataImage = $(this).attr('data-image');
         $(this).css('background-image', 'url(' + dataImage + ')');
